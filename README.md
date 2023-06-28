@@ -29,7 +29,7 @@ ShopSmart is an e-commerce platform that aims to provide users with a seamless s
 
 To install and run ShopSmart locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-repo-url.git`
+1. Clone the repository: `git clone https://github.com/ammarsaa/ShopSmart`
 2. Navigate to the project directory: `cd shopsmart`
 3. Install the dependencies: `npm install`
 4. Start the development server: `npm start` OR `npm run dev`
