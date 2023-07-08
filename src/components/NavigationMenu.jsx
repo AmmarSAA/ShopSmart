@@ -19,7 +19,7 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 
 function NavigationMenu() {
   const [categories, setCategories] = useState([]);
-  const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   useEffect(() => {
     // Fetch categories from the API

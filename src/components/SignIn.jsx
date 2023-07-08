@@ -14,11 +14,11 @@ const Signin = () => {
       <form>
         <div className="form-group">
           <label htmlFor="email">Email</label>
-          <input type="email" className="form-control" id="email" />
+          <input type="email" className="form-control" id="email" required="true"/>
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input type="password" className="form-control" id="password" />
+          <input type="password" className="form-control" id="password" required="true"/>
         </div>
         <button type="submit" className="btn btn-outline-dark py-2 my-2 float-end">Sign In</button>
       </form>
