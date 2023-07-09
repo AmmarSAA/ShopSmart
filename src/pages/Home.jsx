@@ -5,47 +5,49 @@
 ****************************/
 
 import React from 'react';
+import CrouselItem from '../components/CrouselItem';
+import '../App.css';
+import Badge from 'react-bootstrap/Badge';
+import { Link, useParams } from 'react-router-dom';
+import HomePage from '../components/HomePage';
+import Feature from '../components/Feature';
+import Partner from '../components/Partner';
+
 
 const Home = () => {
   return (
-    <div className="container">
-      <header className="jumbotron mt-5">
-        <h1 className="display-4">Welcome to ShopSmart</h1>
-        <p className="lead">Discover Your Style, Shop with Ease</p>
-        <hr className="my-4" />
-        <p>Explore our wide range of high-quality products.</p>
-        <a className="btn btn-outline-primary btn-lg" href="/products" role="button">Browse Products</a>
-      </header>
+    <>
+      {/* Crousel start from here */}
+      
+      <CrouselItem />
+      
+      {/* Crousel end */}
 
-      <section className="my-5">
-        <h2>Featured Products</h2>
-        <div className="row">
-          {/* Display featured products */}
-          <div className="col-md-4">
-            <div className="card mb-4">
-              <img src="/path/to/product-image.jpg" className="card-img-top" alt="Product" />
-              <div className="card-body">
-                <h5 className="card-title">Product Name</h5>
-                <p className="card-text">Product description goes here.</p>
-                <a href="/product-details" className="btn btn-outline-primary">View Details</a>
-              </div>
-            </div>
+      <div className="container">
+        <header className="jumbotron mt-5">
+          <h1 className="prod-head my-5 shadow-text">Welcome to ShopSmart</h1>
+          <p className="text-center fs-5 fw-2">Discover Your Style, Shop with Ease</p>
+          <hr className="my-4" />
+          <div className='d-flex justify-content-between align-items-center browse-c'>
+            <p className='me-4 browse'>Explore our wide range of high-quality products.</p>
+            <a className="custom-button" href="/products" role="button">Browse Products</a>
           </div>
-        </div>
-      </section>
+        </header>
+      </div>
 
-      <section className="my-5">
-        <h2>About Us</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec dui euismod, consectetur ipsum in, fringilla mi. Donec viverra eros non lectus fringilla, nec vulputate felis eleifend.</p>
-        <a className="btn btn-outline-secondary" href="/about" role="button">Learn More</a>
-      </section>
+      {/* Main section starts from here */}
 
-      <section className="my-5">
-        <h2>Contact Us</h2>
-        <p>If you have any questions or inquiries, feel free to reach out to us.</p>
-        <a className="btn btn-outline-secondary" href="/contact" role="button">Contact</a>
-      </section>
-    </div>
+      {/* Another Categories */}
+      <HomePage />
+
+      {/* Feature Product */}
+      <Feature />
+
+      {/* Partners Section */}
+      <Partner />
+
+
+    </>
   );
 };
 

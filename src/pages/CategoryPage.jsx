@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function CategoryPage() {
   const { categoryName } = useParams();
@@ -26,11 +27,21 @@ export default function CategoryPage() {
         </div>
 
         <div className="row">
-          {products.map((val, key) => (
-            <ProductCard key={key} product={val}/>
-          ))}
+          {
+            products.length > 0 ? (
+              products.map((val, key) => (
+                <ProductCard key={key} product={val}/>
+              ))
+            ) : (
+              <div className="d-flex justify-content-center align-items-center"
+                    style={{ width: '100vw', height: '60vh' }}>
+                    <Spinner animation="grow" />
+                    </div>
+            )
+          }
         </div>
       </div>
     </>
   );
 }
+ 
