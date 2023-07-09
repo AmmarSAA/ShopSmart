@@ -4,13 +4,13 @@
 * Output: Footer         *
 *************************/
 
-
 import React, { useEffect, useState } from 'react';
 import { FaTwitterSquare, FaFacebookSquare, FaInstagramSquare, FaLinkedin, FaRegHandshake } from 'react-icons/fa';
 import { BiSupport } from 'react-icons/bi';
 import { MdOutlinePrivacyTip } from 'react-icons/md';
 import { BiInfoSquare } from 'react-icons/bi';
 import { fetchCategories } from '../services/apiService';
+import '../App.css';
 
 const Footer = () => {
   const [categories, setCategories] = useState([]);
@@ -43,29 +43,29 @@ const Footer = () => {
           <div className="col-sm-5 col-md-4 col-lg-6">
             <h4>Company</h4>
             <ul className="list-unstyled">
-              <li>
-                <a href="/about" className="text-decoration-none text-light"><BiInfoSquare color='light' size={'5%'} /> Info</a>
+              <li className='mt-3'>
+                <a href="/about" className="text-light"><BiInfoSquare color='light' size={'5%'} /> Info</a>
+              </li>
+              <li className='my-3'>
+                <a href="/contact" className="text-light"><BiSupport color='light' size={'5%'} /> Contact Us</a>
               </li>
               <li>
-                <a href="/contact" className="text-decoration-none text-light"><BiSupport color='light' size={'5%'} /> Contact Us</a>
+                <a href="/privacy-policy" className="text-light"><MdOutlinePrivacyTip color='light' size={'5%'} /> Privacy Policy</a>
               </li>
-              <li>
-                <a href="/privacy-policy" className="text-decoration-none text-light"><MdOutlinePrivacyTip color='light' size={'5%'} /> Privacy Policy</a>
-              </li>
-              <li>
+              <li className='my-3'>
                 <a href="/terms-of-service" className="text-decoration-none text-light"><FaRegHandshake color='light' size={'5%'} /> Terms Of Service</a>
               </li>
             </ul>
           </div>
           <div className="col-sm-7 col-md-8 col-lg-6 text-center mt-4 mt-md-0">
-            <h4>Categories</h4>
+            <h4>CATEGORIES</h4>
             <div className="row justify-content-center">
               {dividedCategories.map((column, columnIndex) => (
                 <div key={columnIndex} className="col">
                   <ul className="list-unstyled">
                     {column.map((category) => (
-                      <li key={category}>
-                        <a href={`products/category/${category}`} className="text-decoration-none text-light">{category}</a>
+                      <li key={category} className='my-3 category'>
+                        <a href={`products/category/${category}`} className="text-light">{category.toUpperCase()}</a>
                       </li>
                     ))}
                   </ul>
