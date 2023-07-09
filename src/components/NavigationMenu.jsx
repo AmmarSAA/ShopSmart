@@ -4,7 +4,7 @@
 * Output: Navigation Bar         *
 *********************************/
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -16,10 +16,16 @@ import { BsCart4 } from "react-icons/bs";
 import { PiSignOut, PiSignIn } from "react-icons/pi";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineUserAdd } from "react-icons/ai";
+import Cart from './Cart';
+import { GlobalContext } from '../Context/context';
 
 function NavigationMenu() {
   const [categories, setCategories] = useState([]);
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(true);
+
+  // Context Api
+
+  let {state, dispatch} = useContext(GlobalContext);
 
   useEffect(() => {
     // Fetch categories from the API
@@ -41,24 +47,24 @@ function NavigationMenu() {
   );
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="body-tertiary" sticky="top">
+    <Navbar collapseOnSelect expand="lg" bg="white" sticky="top">
       <Container>
-        <Navbar.Brand href="#">ShopSmart</Navbar.Brand>
+        <Navbar.Brand href="#" className='nav-color text-success'>ShopSmart</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link>
-              <Link className="text-decoration-none mx-2 text-dark" to="/">
+              <Link className="text-decoration-none mx-2 nav-color" to="/">
                 Home
               </Link>
             </Nav.Link>
             <Nav.Link>
-              <Link className="text-decoration-none mx-2 text-dark" to="/about">
+              <Link className="text-decoration-none mx-2 nav-color" to="/about">
                 About
               </Link>
             </Nav.Link>
             <Nav.Link>
-              <Link className="text-decoration-none mx-2 text-dark" to="/products">
+              <Link className="text-decoration-none mx-2 nav-color" to="/products">
                 Products
               </Link>
             </Nav.Link>
@@ -90,9 +96,13 @@ function NavigationMenu() {
                     <FaUserCircle />
                     <span className="d-none d-lg-inline"> Profile</span>
                   </Button>
-                  <Button variant="light" className="btn btn-outline-dark" href="/cart">
+                  <Button variant="light" className="btn-outline-dark mx-3" href="#">
                     <BsCart4 />
-                    <span className="d-none d-lg-inline"> Cart</span>
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      {state.cart.length}
+                      <span className="visually-hidden">unread messages</span>
+                    </span>
+                    <span className="d-none d-lg-inline"> <Cart /></span>
                   </Button>
                   <Button variant="light" className="btn btn-outline-danger" href="/signout">
                     <PiSignOut />
