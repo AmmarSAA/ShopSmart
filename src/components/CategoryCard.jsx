@@ -15,7 +15,7 @@ function CategoryCard({ category }) {
         to={`/products/category/${category}`}
       >
         <Card>
-          <Card.Body>
+          <Card.Body style={{backgroundImage: 'radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%)', color: '#fff'}}>
             <Card.Title>{category.toUpperCase()}</Card.Title>
           </Card.Body>
         </Card>
