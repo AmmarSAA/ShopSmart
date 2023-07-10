@@ -11,13 +11,16 @@ import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom'
 import ContextProvider from './Context/context.jsx';
+import Login_Provider from './Context/Login-Context/login-context.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ContextProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ContextProvider>
+    <Login_Provider>
+      <ContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ContextProvider>
+    </Login_Provider>
   </React.StrictMode>,
 )

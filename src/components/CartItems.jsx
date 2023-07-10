@@ -11,7 +11,7 @@ export default function CartItems({ cartData }) {
         
         const item = { ...cartData };
         dispatch({
-            type: "DELTE_ITEM",
+            type: "DELETE_ITEM",
             payload: item,
         });
     }

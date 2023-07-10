@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function HomePage() {
     return (
@@ -10,7 +11,7 @@ export default function HomePage() {
             </div>
             <div>
               <h4 className='my-3'>Mobile Phones</h4>
-              <button className='custom-button'>Shop Now</button>
+              <Link to="/products/category/smartphones"><button className='custom-button'>Shop Now</button></Link>
             </div>
           </div>
           <div className="col-md-4">
@@ -19,7 +20,7 @@ export default function HomePage() {
             </div>
             <div>
               <h4 className='my-3'>Head Phones</h4>
-              <button className='custom-button'>Shop Now</button>
+              <Link to="/products/category/lighting"><button className='custom-button'>Shop Now</button></Link>
             </div>
           </div>
           <div className="col-md-4">
@@ -28,7 +29,7 @@ export default function HomePage() {
             </div>
             <div>
               <h4 className='my-3'>Best Laptops</h4>
-              <button className='custom-button'>Shop Now</button>
+              <Link to="/products/category/laptops"><button className='custom-button'>Shop Now</button></Link>
             </div>
           </div>
         </div>
@@ -39,7 +40,7 @@ export default function HomePage() {
                 </div>
                 <div>
                     <h4 className='my-3'>Grocery</h4>
-                    <button className='custom-button'>Shop Now</button>
+                    <Link to="/products/category/groceries"><button className='custom-button'>Shop Now</button></Link>
                 </div>
             </div>
             <div className="col-md-4">
@@ -48,7 +49,7 @@ export default function HomePage() {
                 </div>
                 <div>
                     <h4 className='my-3'>Fragrance</h4>
-                    <button className='custom-button'>Shop Now</button>
+                    <Link to="/products/category/fragrances"><button className='custom-button'>Shop Now</button></Link>
                 </div>
             </div>
             <div className="col-md-4">
@@ -57,7 +58,7 @@ export default function HomePage() {
                 </div>
                 <div>
                     <h4 className='my-3'>Best Shoes</h4>
-                    <button className='custom-button'>Shop Now</button>
+                    <Link to="/products/category/mens-shoes"><button className='custom-button'>Shop Now</button></Link>
                 </div>
             </div>
         </div>

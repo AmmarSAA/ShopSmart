@@ -4,7 +4,7 @@ import { reducer } from './reducer-context';
 export const LoginContext = createContext("Initial Value");
 
 let login_data = {
-    user: true
+    user: undefined
 }
 
 export default function Login_Provider({ children }) {

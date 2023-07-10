@@ -158,7 +158,7 @@ export default function ProductPage() {
             <div className="btn-group">
               <button
                 className="btn btn-outline-danger me-2 px-4"
-                onClick={() => setCount((prevCount) => Math.max(prevCount - 1, 1))}
+                onClick={() => setCount((prevCount) => Math.max(prevCount - 1, 0))}
               >
                 -
               </button>

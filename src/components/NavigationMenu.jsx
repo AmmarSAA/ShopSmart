@@ -18,14 +18,23 @@ import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import Cart from './Cart';
 import { GlobalContext } from '../Context/context';
+import LoginForm from './LoginForm';
+import Signin from './SignIn';
+import { LoginContext } from '../Context/Login-Context/login-context';
 
 function NavigationMenu() {
   const [categories, setCategories] = useState([]);
-  const [isSignedIn, setIsSignedIn] = useState(true);
 
   // Context Api
 
-  let {state, dispatch} = useContext(GlobalContext);
+  const logOutUser = () => {
+
+    dispatch({ type: "LOGOUT_USER" })
+  }
+
+  let {add, adDispatch} = useContext(GlobalContext);
+  let { state, dispatch } = useContext(LoginContext);
+
 
   useEffect(() => {
     // Fetch categories from the API
@@ -89,22 +98,22 @@ function NavigationMenu() {
             </NavDropdown>
           </Nav>
           <Nav>
-            {isSignedIn ? (
+            {state.user ? (
               <>
                 <ButtonGroup aria-label="Basic example">
                   <Button variant="light" className="btn btn-outline-dark" href="/profile">
                     <FaUserCircle />
-                    <span className="d-none d-lg-inline"> Profile</span>
+                    <span className="d-none d-lg-inline"> {state.user.email}</span>
                   </Button>
                   <Button variant="light" className="btn-outline-dark mx-3" href="#">
                     <BsCart4 />
-                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      {state.cart.length}
+                    {/* <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      {add.cart.length}
                       <span className="visually-hidden">unread messages</span>
-                    </span>
-                    <span className="d-none d-lg-inline"> <Cart /></span>
+                    </span> */}
+                    <span className="d-none d-lg-inline"> <Cart /></span> 
                   </Button>
-                  <Button variant="light" className="btn btn-outline-danger" href="/signout">
+                  <Button variant="light" className="btn btn-outline-danger" onClick={logOutUser}>
                     <PiSignOut />
                     <span className="d-none d-lg-inline"> Sign Out</span>
                   </Button>
@@ -116,10 +125,11 @@ function NavigationMenu() {
                   <AiOutlineUserAdd />
                   <span className="d-none d-lg-inline"> Sign Up</span>
                 </Button>
-                <Button variant="light" className="btn btn-outline-dark" href="/signin">
+                <Button variant="light" className="btn btn-outline-dark">
                   <PiSignIn />
-                  <span className="d-none d-lg-inline"> Sign In</span>
-                </Button>
+                  <LoginForm />
+                  </Button>
+                
               </ButtonGroup>
             )}
           </Nav>

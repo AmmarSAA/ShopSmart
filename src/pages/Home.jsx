@@ -12,6 +12,7 @@ import { Link, useParams } from 'react-router-dom';
 import HomePage from '../components/HomePage';
 import Feature from '../components/Feature';
 import Partner from '../components/Partner';
+import Button from 'react-bootstrap/Button';
 
 
 const Home = () => {
@@ -30,7 +31,7 @@ const Home = () => {
           <hr className="my-4" />
           <div className='d-flex justify-content-between align-items-center browse-c'>
             <p className='me-4 browse'>Explore our wide range of high-quality products.</p>
-            <a className="custom-button" href="/products" role="button">Browse Products</a>
+            <Link to="/products"><Button type="button" className='custom-button'>Browse Products</Button></Link>
           </div>
         </header>
       </div>
