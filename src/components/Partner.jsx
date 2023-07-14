@@ -3,7 +3,7 @@ import React from 'react'
 export default function Partner() {
   return (
     <section className="partner-section">
-    <h2 className='text-white pt-3'>Our Partners</h2>
+    <h2 className='part-head'>Our Partners</h2>
     <div className="partner-list">
       <div className="partner-item">
         <img src="../images/partner1.jpeg" alt="Partner 1" />

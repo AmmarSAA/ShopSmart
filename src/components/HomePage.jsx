@@ -11,7 +11,7 @@ export default function HomePage() {
             </div>
             <div>
               <h4 className='my-3'>Mobile Phones</h4>
-              <Link to="/products/category/smartphones"><button className='custom-button'>Shop Now</button></Link>
+              <Link to="/products/category/smartphones"><button className='custom-button my-4'>Shop Now</button></Link>
             </div>
           </div>
           <div className="col-md-4">
@@ -20,7 +20,7 @@ export default function HomePage() {
             </div>
             <div>
               <h4 className='my-3'>Head Phones</h4>
-              <Link to="/products/category/lighting"><button className='custom-button'>Shop Now</button></Link>
+              <Link to="/products/category/lighting"><button className='custom-button my-4'>Shop Now</button></Link>
             </div>
           </div>
           <div className="col-md-4">
@@ -40,7 +40,7 @@ export default function HomePage() {
                 </div>
                 <div>
                     <h4 className='my-3'>Grocery</h4>
-                    <Link to="/products/category/groceries"><button className='custom-button'>Shop Now</button></Link>
+                    <Link to="/products/category/groceries"><button className='custom-button my-4'>Shop Now</button></Link>
                 </div>
             </div>
             <div className="col-md-4">
@@ -49,7 +49,7 @@ export default function HomePage() {
                 </div>
                 <div>
                     <h4 className='my-3'>Fragrance</h4>
-                    <Link to="/products/category/fragrances"><button className='custom-button'>Shop Now</button></Link>
+                    <Link to="/products/category/fragrances"><button className='custom-button my-4'>Shop Now</button></Link>
                 </div>
             </div>
             <div className="col-md-4">

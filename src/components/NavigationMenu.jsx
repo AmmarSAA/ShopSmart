@@ -21,6 +21,7 @@ import { GlobalContext } from '../Context/context';
 import LoginForm from './LoginForm';
 import Signin from './SignIn';
 import { LoginContext } from '../Context/Login-Context/login-context';
+import '../App.css';
 
 function NavigationMenu() {
   const [categories, setCategories] = useState([]);
@@ -56,7 +57,7 @@ function NavigationMenu() {
   );
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="white" sticky="top">
+    <Navbar collapseOnSelect expand="lg" bg="white" sticky="top" className="custom-navbar">
       <Container>
         <Navbar.Brand href="#" className='nav-color text-success'>ShopSmart</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -86,7 +87,7 @@ function NavigationMenu() {
                       href={`/products/category/${category}`}
                       className="text-decoration-none"
                     >
-                      {category}
+                      {category.toUpperCase()}
                     </NavDropdown.Item>
                   ))}
                 </div>
@@ -101,33 +102,33 @@ function NavigationMenu() {
             {state.user ? (
               <>
                 <ButtonGroup aria-label="Basic example">
-                  <Button variant="light" className="btn btn-outline-dark" href="/profile">
-                    <FaUserCircle />
-                    <span className="d-none d-lg-inline"> {state.user.email}</span>
+                  <Button variant="light" className="custom-button d-flex align-items-center gap-2 text-white" href="/profile">
+                    <FaUserCircle className="navbar-icon text-white"/>
+                    <span className="d-none d-lg-inline text-white"> {state.user.email}</span>
                   </Button>
-                  <Button variant="light" className="btn-outline-dark mx-3" href="#">
-                    <BsCart4 />
+                  <Button variant="light" className="custom-button mx-3 d-flex align-items-center gap-2" href="#">
+                    <BsCart4 className="navbar-icon text-white"/>
                     {/* <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                       {add.cart.length}
                       <span className="visually-hidden">unread messages</span>
-                    </span> */}
-                    <span className="d-none d-lg-inline"> <Cart /></span> 
+                    </span>*/}
+                    <span className="d-block d-lg-inline"> <Cart /></span>  
                   </Button>
-                  <Button variant="light" className="btn btn-outline-danger" onClick={logOutUser}>
-                    <PiSignOut />
-                    <span className="d-none d-lg-inline"> Sign Out</span>
+                  <Button variant="light" className="custom-button d-flex align-items-center gap-2" onClick={logOutUser}>
+                    <PiSignOut className="navbar-icon text-white"/>
+                    <span className="d-none d-lg-inline text-white"> Sign Out</span>
                   </Button>
                 </ButtonGroup>
               </>
             ) : (
               <ButtonGroup aria-label="Basic example">
-                <Button variant="light" className="btn btn-outline-dark" href="/signup">
-                  <AiOutlineUserAdd />
-                  <span className="d-none d-lg-inline"> Sign Up</span>
+                <Button variant="light" className="btn custom-button d-flex align-items-center gap-2" href="/signup">
+                  <AiOutlineUserAdd className="navbar-icon text-white"/>
+                  <span className="d-none d-lg-inline text-white"> Sign Up</span>
                 </Button>
-                <Button variant="light" className="btn btn-outline-dark">
-                  <PiSignIn />
-                  <LoginForm />
+                <Button variant="light" className="custom-button d-flex align-items-center gap-2">
+                  <PiSignIn className="navbar-icon text-white"/>
+                  <LoginForm className="navbar-icon text-white"/>
                   </Button>
                 
               </ButtonGroup>

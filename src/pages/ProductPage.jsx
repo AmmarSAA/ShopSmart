@@ -10,17 +10,17 @@ import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import StarRatings from "react-star-ratings";
 import { getProduct } from "../services/apiService";
-import {GlobalContext} from '../Context/context';
+import { GlobalContext } from '../Context/context';
 
 export default function ProductPage() {
   const [count, setCount] = useState(1);
   const { productId } = useParams();
   const [product, setProduct] = useState({});
-  
+
 
   // Context APi data transfering
 
-  let {state, dispatch} = useContext(GlobalContext); // It's similar to the state with the replacement of setProperty to dispatch
+  let { state, dispatch } = useContext(GlobalContext); // It's similar to the state with the replacement of setProperty to dispatch
 
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function ProductPage() {
     }
 
     const item = { ...product, count };
-    dispatch ({
+    dispatch({
       type: "ADD_TO_CART",
       payload: item,
     });
@@ -89,7 +89,7 @@ export default function ProductPage() {
       },
       buttonsStyling: false
     })
-    
+
     swalWithBootstrapButtons.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -125,61 +125,61 @@ export default function ProductPage() {
       </div>
 
       <div className="container">
-      <div className="row">
-      
-        <div className="col-lg-6 col-md-8 col-sm-10 mx-auto">
-         
-          <Carousel>
-            {product?.images?.map((image, index) => (
-              <Carousel.Item key={index}>
-                <img className="d-block w-100" src={image} style={{width: '100%', height: '65vh'}} alt={`Slide ${index + 1}`} />
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        </div>
-        <div className="col-lg-6 col-md-8 col-sm-10 mx-auto p-4">
-          <div>
-            <p className="color-secondary"><b>Description</b>: {product.description}</p>
-            <p>
-              <b>Price:</b> <del>{product.price}</del> - <ins>{product.discountPercentage}</ins>
-            </p>
-            <div className="d-flex align-items-center mb-2">
-              <StarRatings
-                rating={product.rating}
-                starRatedColor="#ffc107"
-                starEmptyColor="#e4e5e9"
-                numberOfStars={5}
-                starDimension="20px"
-                starSpacing="2px"
-              />
-              <span className="ms-2 mt-2">{product.rating}</span>
-            </div>
-            <p><b>Stock Left:</b> {product.stock}</p>
-            <div className="btn-group">
-              <button
-                className="btn btn-outline-danger me-2 px-4"
-                onClick={() => setCount((prevCount) => Math.max(prevCount - 1, 0))}
-              >
-                -
-              </button>
-              <div className="m-2">{count}</div>
-              <button
-                className="btn btn-outline-primary ms-2 px-4"
-                onClick={() => setCount((prevCount) => prevCount + 1)}
-              >
-                +
-              </button>
-            </div>
-            <div className="mt-3">
-              <button className="btn btn-outline-success me-2" onClick={addToCart}>
-                Add to Cart
-              </button>
-              <button className="btn btn-outline-secondary" onClick={placeOrder}>
-                Place Order
-              </button>
+        <div className="row">
+
+          <div className="col-lg-6 col-md-8 col-sm-10 mx-auto">
+
+            <Carousel>
+              {product?.images?.map((image, index) => (
+                <Carousel.Item key={index}>
+                  <img className="d-block w-100" src={image} style={{ width: '100%', height: '65vh' }} alt={`Slide ${index + 1}`} />
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </div>
+          <div className="col-lg-6 col-md-8 col-sm-10 mx-auto p-4">
+            <div>
+              <p className="color-secondary"><b>Description</b>: {product.description}</p>
+              <p>
+                <b>Price:</b> <del>{product.price}</del> - <ins>{product.discountPercentage}</ins>
+              </p>
+              <div className="d-flex align-items-center mb-2">
+                <StarRatings
+                  rating={product.rating}
+                  starRatedColor="#ffc107"
+                  starEmptyColor="#e4e5e9"
+                  numberOfStars={5}
+                  starDimension="20px"
+                  starSpacing="2px"
+                />
+                <span className="ms-2 mt-2">{product.rating}</span>
+              </div>
+              <p><b>Stock Left:</b> {product.stock}</p>
+              <div className="btn-group">
+                <button
+                  className="btn btn-outline-danger me-2 px-4"
+                  onClick={() => setCount((prevCount) => Math.max(prevCount - 1, 0))}
+                >
+                  -
+                </button>
+                <div className="m-2">{count}</div>
+                <button
+                  className="btn btn-outline-primary ms-2 px-4"
+                  onClick={() => setCount((prevCount) => prevCount + 1)}
+                >
+                  +
+                </button>
+              </div>
+              <div className="mt-3">
+                <button className="btn btn-outline-success me-2" onClick={addToCart}>
+                  Add to Cart
+                </button>
+                <button className="btn btn-outline-secondary" onClick={placeOrder}>
+                  Place Order
+                </button>
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </div>

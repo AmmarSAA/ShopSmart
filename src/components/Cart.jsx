@@ -24,7 +24,7 @@ function Cart() {
 
   return (
     <>
-      <Button variant="" onClick={handleShow}>
+      <Button variant="" onClick={handleShow} style={{background:'none', color: '#fff'}}>
         Cart
       </Button>
 

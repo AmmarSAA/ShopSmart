@@ -29,7 +29,7 @@ export default function CartItems({ cartData }) {
         <div className="card mb-3" style={{width:'100%', height: 'auto', overflow:'hidden'}}>
             <div className="d-flex align-items-center justify-content-between">
                 <div className="row g-0">
-                    <div className="col-md-4">
+                    <div className="col-md-4 col-6">
                         <img src={cartData.thumbnail} className="img-fluid rounded-start" alt="..." style={{width:'100%', height: '120px'}} />
                     </div>
                     <div className="col-md-8">

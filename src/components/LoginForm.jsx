@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Signin from './SignIn';
+import '../App.css';
 
 export default function LoginForm() {
     const [show, setShow] = useState(false);
@@ -13,7 +14,7 @@ export default function LoginForm() {
 
   return (
     <>
-      <Button variant="" onClick={handleShow}>
+      <Button variant="" onClick={handleShow} className='text-white bg-none' style={{background:'none'}}>
         Sign in
       </Button>
 

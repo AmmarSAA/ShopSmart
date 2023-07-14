@@ -23,7 +23,7 @@ export default function CategoryPage() {
     <>
       <div className="container">
         <div className="text-center">
-          <h1 className="mt-5">{categoryName.toUpperCase()}</h1>
+          <h1 className="my-5">{categoryName.toUpperCase()}</h1>
         </div>
 
         <div className="row">
