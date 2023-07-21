@@ -31,7 +31,7 @@ export default function App() {
       {
         state.user ? (
           <Routes>
-            <Route path="/" element={<Home />} />
+            {/* <Route path="/" element={<Home />} /> */}
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/category/:categoryName" element={<CategoryPage />} />
@@ -41,7 +41,7 @@ export default function App() {
 
         ) : (
           <Routes>
-            <Route path="/" element={<Home />} />
+            {/* <Route path="/" element={<Home />} /> */}
             <Route path="/signin" element={<LoginForm />} />
             <Route path="*" element={<Navigate to="/" replace={true} />} />
           </Routes>
