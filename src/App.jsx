@@ -36,14 +36,14 @@ export default function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/products/category/:categoryName" element={<CategoryPage />} />
             <Route path="/product/:productId" element={<ProductPage />} />
-            {/* <Route path="*" element={<Navigate to="/" replace={true} />} /> */}
+            <Route path="*" element={<Navigate to="/" replace={true} />} />
           </Routes>
 
         ) : (
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/signin" element={<LoginForm />} />
-            {/* <Route path="*" element={<Navigate to="/" replace={true} />} /> */}
+            <Route path="*" element={<Navigate to="/" replace={true} />} />
           </Routes>
 
         )
