@@ -1,7 +1,7 @@
 import { useReducer, createContext } from "react";
 import { reducer } from './reducer-context';
 
-export const LoginContext = createContext("Initial Value");
+export const LoginContext = createContext();
 
 let login_data = {
     user: undefined

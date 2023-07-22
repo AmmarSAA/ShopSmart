@@ -1,7 +1,7 @@
 import { useReducer, createContext } from "react";
 import { reducer } from "./reducer";
 
-export const GlobalContext = createContext("Initial Value");
+export const GlobalContext = createContext();
 
 let data = {
     user: "Ameen",

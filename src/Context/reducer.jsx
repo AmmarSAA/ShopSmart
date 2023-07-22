@@ -19,10 +19,27 @@ export const reducer = (state, action) => {
       }
   
       case "DELETE_ITEM": {
-        return {
-          ...state,
-          cart: state.cart.filter(item => item.id !== action.payload.id)
-        };
+        const itemToDelete = state.cart.find(item => item.id === action.payload.id);
+        if (itemToDelete) {
+          if (itemToDelete.count === 1) {
+            // If item count is 1, remove it from the cart
+            return {
+              ...state,
+              cart: state.cart.filter(item => item.id !== action.payload.id)
+            };
+          } else {
+            // If item count is greater than 1, reduce its quantity
+            return {
+              ...state,
+              cart: state.cart.map(item =>
+                item.id === action.payload.id
+                  ? { ...item, count: item.count - 1 }
+                  : item
+              )
+            };
+          }
+        }
+        return state;
       }
   
       default: {
