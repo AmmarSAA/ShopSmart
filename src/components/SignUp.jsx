@@ -24,7 +24,7 @@ const Signup = () => {
           <label htmlFor="password">Password</label>
           <input type="password" className="form-control" id="password" />
         </div>
-        <button type="submit" className="btn btn-outline-dark py-2 my-2 float-end">Sign Up</button>
+        <button type="submit" className="custom-button mt-4 mb-3 float-end">Sign Up</button>
       </form>
     </div>
   );
