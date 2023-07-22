@@ -19,7 +19,7 @@ const NotFoundPage = () => {
       <div className="row col-3 p-2">
         <Link to="/" type="button" class="btn custom-button d-flex align-items-center gap-2 btn btn-light">
           <BsHouse className="text-light navbar-icon text-white" />
-          <span class="d-none d-lg-inline text-white"> Go to Home</span>
+          <span class="d-none d-lg-inline text-white"> Home</span>
         </Link>
       </div>
       <div className="row col-3 p-2">
