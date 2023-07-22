@@ -8,7 +8,7 @@ import React, { useContext } from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
-import { Route, Routes,Navigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import CategoryPage from "./pages/CategoryPage";
 import ProductPage from "./pages/ProductPage";
 import NavigationMenu from "./components/NavigationMenu";
@@ -42,7 +42,6 @@ export default function App() {
         ) : (
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/signin" element={<LoginForm />} />
             <Route path="*" element={<Navigate to="/" replace={true} />} />
           </Routes>
 
