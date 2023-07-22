@@ -1,40 +1,46 @@
-/*************************
-* File Name: SignIn.jsx  *
-* Author: Ammar S.A.A    *
-* Output: Sign in form   *
-*************************/
-
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import '../App.css';
 import { LoginContext } from '../Context/Login-Context/login-context';
-import { useState } from 'react';
-import { useContext } from 'react';
 
-const Signin = () => {
+const SignIn = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-
-  const {state,dispatch} = useContext(LoginContext)
+  const { state, dispatch } = useContext(LoginContext);
 
   const login = (e) => {
     e.preventDefault();
-    const payload = { email, password };
+
+    // Simple validation to check if email and password are not empty
+    if (!email || !password) {
+      setError('Please fill in all fields.');
+      return;
+    }
+
+    // Your actual login logic can be implemented here
+    // For demonstration purposes, let's assume the login is successful
+    const user = { email }; // Replace this with your actual user data
+
+    // Dispatch the LOGIN_USER action with the user data
     dispatch({
-      type: "LOGIN_USER",
-      payload: payload,
+      type: 'LOGIN_USER',
+      payload: user,
     });
 
-  }
+    // Clear the error state
+    setError('');
+  };
 
   return (
     <div className="container">
-      <h2 className='text-center'>Sign In</h2>
-      <h6 className='text-center'>Welcome Back!!!</h6>
+      <h2 className="text-center">Sign In</h2>
+      <h6 className="text-center">Welcome Back!!!</h6>
       <form onSubmit={login}>
         <div className="form-group">
-          <label htmlFor="email"><b>Email</b></label>
+          <label htmlFor="email">
+            <b>Email</b>
+          </label>
           <input
             type="email"
             className="form-control"
@@ -45,7 +51,9 @@ const Signin = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password"><b>Password</b></label>
+          <label htmlFor="password">
+            <b>Password</b>
+          </label>
           <input
             type="password"
             className="form-control"
@@ -54,10 +62,13 @@ const Signin = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit" className="custom-button mt-4 mb-3 float-end">Sign In</button>
+        {error && <p className="text-danger">{error}</p>}
+        <button type="submit" className="custom-button mt-4 mb-3 float-end">
+          Sign In
+        </button>
       </form>
     </div>
   );
 };
 
-export default Signin;
+export default SignIn;
