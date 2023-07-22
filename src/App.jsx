@@ -13,9 +13,10 @@ import CategoryPage from "./pages/CategoryPage";
 import ProductPage from "./pages/ProductPage";
 import NavigationMenu from "./components/NavigationMenu";
 import Footer from "./components/Footer";
-import SignUp from "./components/SignUp";
-import LoginForm from "./components/LoginForm";
+import NotFoundPage from "./components/404";
 import { LoginContext } from "./Context/Login-Context/login-context";
+import LoginForm from "./components/LoginForm";
+import SignupForm from "./components/SignUpForm";
 
 export default function App() {
 
@@ -42,7 +43,9 @@ export default function App() {
         ) : (
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="*" element={<Navigate to="/" replace={true} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
 
         )
