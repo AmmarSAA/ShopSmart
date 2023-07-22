@@ -8,7 +8,7 @@ export const reducer = (state, action) => {
             ...state,
             cart: state.cart.map(item =>
               item.id === action.payload.id
-                ? { ...item, count: item.count + 1 }
+                ? { ...item, count: item.count + action.payload.count }
                 : item
             )
           };
