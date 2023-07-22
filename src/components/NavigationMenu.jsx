@@ -1,7 +1,7 @@
 /*********************************
 * File Name: NavigationMenu.jsx  *
 * Author: Ammar S.A.A            *
-* Output: Navigation Bar         *
+* Output: Navbar                 *
 *********************************/
 
 import React, { useContext, useEffect, useState } from 'react';
@@ -19,34 +19,25 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 import Cart from './Cart';
 import { GlobalContext } from '../Context/context';
 import LoginForm from './LoginForm';
-import Signin from './SignIn';
 import { LoginContext } from '../Context/Login-Context/login-context';
 import '../App.css';
+import SignupForm from './SignUpForm';
 
 function NavigationMenu() {
   const [categories, setCategories] = useState([]);
 
-  // Context Api
-
   const logOutUser = () => {
-
-    dispatch({ type: "LOGOUT_USER" })
+    dispatch({ type: "LOGOUT_USER" });
   }
 
-  let {add, adDispatch} = useContext(GlobalContext);
-  let { state, dispatch } = useContext(LoginContext);
-
+  const { state, dispatch } = useContext(LoginContext);
+  const { add } = useContext(GlobalContext);
 
   useEffect(() => {
     // Fetch categories from the API
     fetch('https://dummyjson.com/products/categories')
       .then((response) => response.json())
       .then((data) => setCategories(data));
-
-    // Check if user is signed in (You can use your own logic to determine the sign-in status)
-    // Replace with your own function
-    // const userSignedIn = checkUserSignedIn();
-    // setIsSignedIn(userSignedIn);
   }, []);
 
   const rowCount = 10; // Number of rows for categories
@@ -78,7 +69,7 @@ function NavigationMenu() {
                 Products
               </Link>
             </Nav.Link>
-            <NavDropdown title="Categories" id="collasible-nav-dropdown">
+            <NavDropdown title="Categories" id="collapsible-nav-dropdown">
               {dividedCategories.map((column, columnIndex) => (
                 <div key={columnIndex} className="d-flex">
                   {column.map((category) => (
@@ -103,34 +94,23 @@ function NavigationMenu() {
               <>
                 <ButtonGroup aria-label="Basic example">
                   <Button variant="light" className="custom-button d-flex align-items-center gap-2 text-white" href="/profile">
-                    <FaUserCircle className="navbar-icon text-white"/>
+                    <FaUserCircle className="navbar-icon text-white" />
                     <span className="d-none d-lg-inline text-white"> {state.user.email}</span>
                   </Button>
                   <Button variant="light" className="custom-button mx-3 d-flex align-items-center gap-2" href="#">
-                    <BsCart4 className="navbar-icon text-white"/>
-                    {/* <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      {add.cart.length}
-                      <span className="visually-hidden">unread messages</span>
-                    </span>*/}
-                    <span className="d-block d-lg-inline"> <Cart /></span>  
+                    <BsCart4 className="navbar-icon text-white" />
+                    <span className="d-block d-lg-inline"> <Cart /></span>
                   </Button>
                   <Button variant="light" className="custom-button d-flex align-items-center gap-2" onClick={logOutUser}>
-                    <PiSignOut className="navbar-icon text-white"/>
+                    <PiSignOut className="navbar-icon text-white" />
                     <span className="d-none d-lg-inline text-white"> Sign Out</span>
                   </Button>
                 </ButtonGroup>
               </>
             ) : (
               <ButtonGroup aria-label="Basic example">
-                <Button variant="light" className="btn custom-button d-flex align-items-center gap-2" href="/signup">
-                  <AiOutlineUserAdd className="navbar-icon text-white"/>
-                  <span className="d-none d-lg-inline text-white"> Sign Up</span>
-                </Button>
-                <Button variant="light" className="custom-button d-flex align-items-center gap-2">
-                  <PiSignIn className="navbar-icon text-white"/>
-                  <LoginForm className="navbar-icon text-white"/>
-                  </Button>
-                
+                <SignupForm />
+                <LoginForm />
               </ButtonGroup>
             )}
           </Nav>
