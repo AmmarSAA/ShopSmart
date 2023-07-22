@@ -76,4 +76,4 @@ ShopSmart is licensed under the [MIT License](LICENSE).
 
 ## Additional Information
 
-For additional information, contact us at shopsmart@example.com or visit our website [https://shop-smart-ammar-saa.vercel.app](https://www.shop-smart-ammar-saa.vercel.app).
+For additional information, contact us at shopsmart@example.com or visit our website [https://shopsmartbyrefiners.vercel.app](https://www.shopsmartbyrefiners.vercel.app).
