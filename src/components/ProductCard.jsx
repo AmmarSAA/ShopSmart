@@ -21,7 +21,7 @@ function ProductCard({product}) {
             `${product.description.substring(0, 40)} ...` : product.description
           }
           </Card.Text>
-          <Card.Text> <b>Price: </b>{product.price}$ </Card.Text>
+          <Card.Text> <b>Price: </b>$ {product.price}</Card.Text>
           <Link to={`/product/${product.id}`} style={{position:'absolute', bottom:'20%',right:'12px'}} className="btn btn-dark float-end"><BsCartPlusFill /></Link>
         </Card.Body>
       </Card>

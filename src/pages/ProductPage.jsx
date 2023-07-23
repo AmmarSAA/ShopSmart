@@ -141,7 +141,7 @@ export default function ProductPage() {
             <div>
               <p className="color-secondary"><b>Description</b>: {product.description}</p>
               <p>
-                <b>Price:</b> <del>{product.price}</del> - <ins>{product.discountPercentage}</ins>
+                <b>Price:</b> $<del>{product.price}</del> - <ins>{product.discountPercentage}</ins>
               </p>
               <div className="d-flex align-items-center mb-2">
                 <StarRatings

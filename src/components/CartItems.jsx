@@ -42,7 +42,7 @@ export default function CartItems({ cartData }) {
                                 <br />
 
                                 <small className="text-body-secondary">
-                                    <b>Total</b> - {cartData.price * cartData.count}$
+                                    <b>Total</b> - ${cartData.price * cartData.count}
                                 </small>
                             </p>
                         </div>
