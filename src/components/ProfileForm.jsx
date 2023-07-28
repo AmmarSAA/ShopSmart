@@ -30,7 +30,7 @@ export default function ProfileForm() {
       </Button>
 
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} centered>
-        <Modal.Header closeButton></Modal.Header>
+        <Modal.Header closeButton>{state.user.username}</Modal.Header>
         <Modal.Body style={{ padding: '20px' }}>
           <Profile />
         </Modal.Body>
