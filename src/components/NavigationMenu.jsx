@@ -15,13 +15,13 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { BsCart4 } from "react-icons/bs";
 import { PiSignOut, PiSignIn } from "react-icons/pi";
 import { FaUserCircle } from "react-icons/fa";
-import { AiOutlineUserAdd } from "react-icons/ai";
 import Cart from './Cart';
 import { GlobalContext } from '../Context/context';
 import LoginForm from './LoginForm';
 import { LoginContext } from '../Context/Login-Context/login-context';
 import '../App.css';
 import SignupForm from './SignUpForm';
+import ProfileForm from './ProfileForm';
 
 function NavigationMenu() {
   const [categories, setCategories] = useState([]);
@@ -93,10 +93,7 @@ function NavigationMenu() {
             {state.user ? (
               <>
                 <ButtonGroup aria-label="Basic example">
-                  <Button variant="light" className="custom-button d-flex align-items-center gap-2 text-white" href="/profile">
-                    <FaUserCircle className="navbar-icon text-white" />
-                    <span className="d-none d-lg-inline text-white"> {state.user.email}</span>
-                  </Button>
+                  <ProfileForm />
                   <Button variant="light" className="custom-button mx-3 d-flex align-items-center gap-2" href="#">
                     <BsCart4 className="navbar-icon text-white" />
                     <span className="d-block d-lg-inline"> <Cart /></span>
