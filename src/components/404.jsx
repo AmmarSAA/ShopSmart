@@ -19,9 +19,9 @@ const NotFoundPage = () => {
 			<p className="text-center">The page you are looking for does not exist or is private.</p>
 			<div className="alert alert-primary text-center p-0 px-3 pt-2"><FcIdea /><p className="text-center text-primary small">Tip: Try Signing In.</p></div>
 			<div className="row col-3 p-2">
-				<Link to="/" type="button" class="btn custom-button d-flex align-items-center gap-2 btn btn-light">
+				<Link to="/" type="button" className="btn custom-button d-flex align-items-center gap-2 btn btn-light">
 					<BsHouse className="text-light navbar-icon text-white" />
-					<span class="d-none d-lg-inline text-white"> Home</span>
+					<span className="d-none d-lg-inline text-white"> Home</span>
 				</Link>
 			</div>
 			<div className="row col-3 p-2">
