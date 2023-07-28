@@ -52,16 +52,16 @@ export default function CartItems({ cartData }) {
                 <div className="btn-group">
                   <button
                     className="btn btn-outline-danger me-2 px-4"
-                    onClick={increaseItem}
+                    onClick={decreaseItem}
                   >
-                    +
+                    -
                   </button>
                   <div className="m-2">{cartData.count}</div>
                   <button
                     className="btn btn-outline-primary ms-2 px-4"
-                    onClick={decreaseItem}
+                    onClick={increaseItem}
                   >
-                    -
+                    +
                   </button>
                 </div>
               </p>
