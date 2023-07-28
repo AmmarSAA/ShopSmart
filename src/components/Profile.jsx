@@ -8,6 +8,16 @@ import React, { useContext } from 'react';
 import { LoginContext } from '../Context/Login-Context/login-context';
 
 const Profile = () => {
+<<<<<<< HEAD
+=======
+    // Replace the following with the user's profile data fetched from the backend or context
+    const userData = {
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        // Add more profile data here
+    };
+
+>>>>>>> 306ea36133dfcaf645ffbe06c97a674738e11598
     const { state } = useContext(LoginContext);
 
     return (
