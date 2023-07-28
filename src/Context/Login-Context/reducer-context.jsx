@@ -11,7 +11,11 @@ export const reducer = (state, action) => {
                 ...state,
                 user: undefined
             }
-
+        case "SIGNUP_USER":
+            return {
+                ...state,
+                user : undefined
+            }
 
         default:
             return state;

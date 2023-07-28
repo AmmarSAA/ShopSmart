@@ -18,18 +18,29 @@ const SignIn = () => {
       return;
     }
 
-    // Your actual login logic can be implemented here
-    // For demonstration purposes, let's assume the login is successful
-    const user = { email }; // Replace this with your actual user data
+    // Here is the local storage get item
 
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find((u) => u.email === email && u.password === password);
+
+    if (!user) {
+      setError("Invalid username or password.")
+    }
+    else {
     // Dispatch the LOGIN_USER action with the user data
     dispatch({
       type: 'LOGIN_USER',
       payload: user,
     });
+    setError('');
+  }
+
+    // Your actual login logic can be implemented here
+    // For demonstration purposes, let's assume the login is successful
+    // const user = { email }; // Replace this with your actual user data
+
 
     // Clear the error state
-    setError('');
   };
 
   return (
