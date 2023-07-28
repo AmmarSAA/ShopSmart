@@ -174,9 +174,9 @@ export default function ProductPage() {
                 <button className="btn btn-outline-success me-2" onClick={addToCart}>
                   Add to Cart
                 </button>
-                <button className="btn btn-outline-secondary" onClick={placeOrder}>
+                {/* <button className="btn btn-outline-secondary" onClick={placeOrder}>
                   Place Order
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
