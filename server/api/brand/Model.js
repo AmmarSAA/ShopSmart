@@ -1,3 +1,9 @@
+/****************************
+* File Name: Model.js 		*
+* Author: Ammar S.A.A 		*
+* Output: Model for brand 	*
+****************************/
+
 const { Schema, model } = require('mongoose')
 
 const BrandSchema = new Schema(
