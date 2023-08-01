@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 import StarRatings from "react-star-ratings";
 import { getProduct } from "../services/apiService";
 import { GlobalContext } from '../Context/context';
+import Comment from "../components/Comments";
 
 export default function ProductPage() {
   const [count, setCount] = useState(1);
@@ -181,6 +182,7 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
+        <Comment />
       </div>
     </div>
   );
