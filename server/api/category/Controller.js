@@ -18,7 +18,7 @@ const getCategory = async (req, res) => {
         //Find all categories
         const allCategory = await Categories.find()
 
-        if (allUsers.length === 0) {
+        if (allCategory.length === 0) {
             return res.json({
                 message: "Oops! No Categories."
             })

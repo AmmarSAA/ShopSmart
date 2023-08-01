@@ -18,7 +18,7 @@ const getProduct = async (req, res) => {
 		//Find all products
 		const allProduct = await Products.find()
 
-		if (allUsers.length === 0) {
+		if (allProduct.length === 0) {
 			return res.json({
 				message: "Oops! No Products."
 			})

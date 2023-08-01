@@ -18,7 +18,7 @@ const getBrand = async (req, res) => {
 		//Find all brands
 		const allBrand = await Brands.find()
 
-		if (allUsers.length === 0) {
+		if (allBrand.length === 0) {
 			return res.json({
 				message: "Oops! No Brands."
 			})
