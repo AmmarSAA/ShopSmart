@@ -24,13 +24,13 @@ export default function App() {
 
   return (
     <>
-      <NavigationMenu />
 
 
       {/* All routes */}
 
       {
         state.user ? (
+          <><><NavigationMenu />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -39,19 +39,23 @@ export default function App() {
             <Route path="/product/:productId" element={<ProductPage />} />
             <Route path="*" element={<Navigate to="/" replace={true} />} />
           </Routes>
+          </>
+          <Footer />
+          </>
 
         ) : (
+          <><><NavigationMenu />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          </Routes></>
+          <Footer /></>
 
         )
       }
 
-      <Footer />
     </>
   );
 }

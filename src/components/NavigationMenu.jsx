@@ -50,7 +50,7 @@ function NavigationMenu() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="white" sticky="top" className="custom-navbar">
       <Container>
-        <Navbar.Brand href="#" className='nav-color text-success'>ShopSmart</Navbar.Brand>
+        <Navbar.Brand href="#" className='nav-brand text-success'>ShopSmart</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">

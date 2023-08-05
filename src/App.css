@@ -95,6 +95,13 @@
   color: #07261E;
 }
 
+.nav-brand {
+  font-weight: 600;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+}
+
 .navbar-expand-lg .navbar-nav .nav-link {
   color: #07261E;
 }
