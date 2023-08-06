@@ -7,6 +7,7 @@ export const reducer = (state, action) => {
             }
 
         case "LOGOUT_USER":
+            localStorage.removeItem('loggedInUser');
             return {
                 ...state,
                 user: undefined

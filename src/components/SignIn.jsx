@@ -30,8 +30,12 @@ const SignIn = () => {
     // Dispatch the LOGIN_USER action with the user data
     dispatch({
       type: 'LOGIN_USER',
-      payload: user,
+      payload: user
     });
+
+    // Login storage
+    localStorage.setItem('loggedInUser', JSON.stringify(user));
+
     setError('');
   }
 

@@ -35,7 +35,7 @@ const Signup = () => {
   
     if (userExists) {
       setError('An account with the same email or username already exists.');
-      console.log("account with the same email or username already exists.");
+      console.log("Account with the same email or username already exists.");
       return;
     }
   
