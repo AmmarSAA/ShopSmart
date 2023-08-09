@@ -1,11 +1,14 @@
 import React, { useState, useContext } from 'react';
 import '../App.css';
 import { LoginContext } from '../Context/Login-Context/login-context';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
+  const [message, setMessage] = useState('');
 
   const { state, dispatch } = useContext(LoginContext);
 
@@ -17,38 +20,33 @@ const SignIn = () => {
       setError('Please fill in all fields.');
       return;
     }
-
-    // Here is the local storage get item
-
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find((u) => u.email === email && u.password === password);
-
-    if (!user) {
-      setError("Invalid username or password.")
-    }
-    else {
-    // Dispatch the LOGIN_USER action with the user data
-    dispatch({
-      type: 'LOGIN_USER',
-      payload: user
-    });
-
-    // Login storage
-    localStorage.setItem('loggedInUser', JSON.stringify(user));
-
-    setError('');
-  }
-
-    // Your actual login logic can be implemented here
-    // For demonstration purposes, let's assume the login is successful
-    // const user = { email }; // Replace this with your actual user data
-
+    const payload = { email, password }
+    // Send the email and password to the server for signin
+    axios
+      .post("https://shopsmart-api.cyclic.app/api/users/signin", payload)
+      .then((response) => {
+        Cookies.set('token',response.data.token)
+        dispatch({
+          type: "LOGIN",
+          token: response.data.token
+        })
+        setMessage(response.data.message);
+      })
+      .catch((error) => {
+        setError(error.response?.data?.message || 'An error occurred');
+      });
 
     // Clear the error state
+    setError(null);
   };
 
   return (
     <div className="container">
+      {message ? (
+        <h4 className='alert alert-success text-center text-capitalize'>{message}</h4>
+      ) : error ? (
+        <h4 className='alert alert-danger text-center text-capitalize'>{error}</h4>
+      ) : null}
       <h2 className="text-center">Sign In</h2>
       <h6 className="text-center">Welcome Back!!!</h6>
       <form onSubmit={login}>
@@ -77,7 +75,6 @@ const SignIn = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {error && <p className="text-danger">{error}</p>}
         <button type="submit" className="custom-button mt-4 mb-3 float-end">
           Sign In
         </button>

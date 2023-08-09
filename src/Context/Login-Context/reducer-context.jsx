@@ -3,14 +3,13 @@ export const reducer = (state, action) => {
         case "LOGIN_USER":
             return {
                 ...state,
-                user: action.payload
+                token: action.token
             }
 
-        case "LOGOUT_USER":
-            localStorage.removeItem('loggedInUser');
+        case "LOGOUT_USER": 
             return {
                 ...state,
-                user: undefined
+                token: undefined
             }
         case "SIGNUP_USER":
             return {

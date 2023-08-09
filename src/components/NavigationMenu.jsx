@@ -90,7 +90,7 @@ function NavigationMenu() {
             </NavDropdown>
           </Nav>
           <Nav>
-            {state.user ? (
+            {state.token ? (
               <>
                 <ButtonGroup aria-label="Basic example">
                   <ProfileForm />

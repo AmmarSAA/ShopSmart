@@ -1,19 +1,38 @@
-import { useReducer, createContext } from "react";
+import React, { useReducer, createContext, useEffect, useState } from "react";
 import { reducer } from './reducer-context';
-
-const initialState = {
-    user: JSON.parse(localStorage.getItem('loggedInUser')) || undefined
-  };
+import Cookies from "js-cookie";
+import { decodeToken } from "react-jwt";
 
 export const LoginContext = createContext();
 
+export default function LoginProvider({ children }) {
+  const storedToken = Cookies.get('token') || undefined;
+  const [state, dispatch] = useReducer(reducer, { token: storedToken });
+  const [userRole, setUserRole] = useState(null);
+  const [userName, setUserName] = useState(null);
+  const [userEmail, setUserEmail] = useState(null);
+  const [userProfilePic, setUserProfilePic] = useState(null);
 
-export default function Login_Provider({ children }) {
-    const [state, dispatch] = useReducer(reducer, initialState);
+  useEffect(() => {
+    if (state.token) {
+      const decodedToken = decodeToken(state.token);
+      setUserRole(decodedToken ? decodedToken.role : null);
+      setUserName(decodedToken ? decodedToken.name : null);
+      setUserEmail(decodedToken ? decodedToken.email : null);
+      setUserProfilePic(decodedToken ? decodedToken.profilePic : null);
+    } else {
+      setUserRole(null);
+      setUserName(null);
+      setUserEmail(null);
+      setUserProfilePic(null);
+    }
 
-    return (
-        <LoginContext.Provider value={{ state, dispatch }}>
-            {children}
-        </LoginContext.Provider>
-    )
+    Cookies.set('token', state.token);
+  }, [state.token]);
+
+  return (
+    <LoginContext.Provider value={{ state, dispatch, userRole, userName, userEmail, userProfilePic }}>
+      {children}
+    </LoginContext.Provider>
+  );
 }

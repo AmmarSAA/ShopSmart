@@ -9,6 +9,7 @@ import { LoginContext } from '../Context/Login-Context/login-context';
 import { useContext } from 'react';
 import { useState } from 'react';
 import SignIn from './SignIn';
+import axios from 'axios';
 
 const Signup = () => {
 
@@ -21,37 +22,39 @@ const Signup = () => {
     const username = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
-  
-    if (!email || !password || !username) {
-      setError('Please fill in all the fields.');
-      console.log("fill in all the fields.");
-      return;
-    }
-  
-    const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
-  
-    // Check if a user with the same email or username already exists
-    const userExists = existingUsers.some((user) => user.email === email || user.username === username);
-  
-    if (userExists) {
-      setError('An account with the same email or username already exists.');
-      console.log("Account with the same email or username already exists.");
-      return;
-    }
-  
-    // Add the new user to the existing users array
-    existingUsers.push({ username, email, password });
-    // Save the updated users array back to local storage
-    localStorage.setItem('users', JSON.stringify(existingUsers));
-  
+
+    // if (!email || !password || !username) {
+    //   setError('Please fill in all the fields.');
+    //   console.log("fill in all the fields.");
+    //   return;
+    // }
+
+    // const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+    // // Check if a user with the same email or username already exists
+    // const userExists = existingUsers.some((user) => user.email === email || user.username === username);
+
+    axios.post("http://localhost:5000/api/users/signup").then((json) => console.log(json.data)).catch(err => console.log(err))
+
+    // if (userExists) {
+    //   setError('An account with the same email or username already exists.');
+    //   console.log("Account with the same email or username already exists.");
+    //   return;
+    // }
+
+    // // Add the new user to the existing users array
+    // existingUsers.push({ username, email, password });
+    // // Save the updated users array back to local storage
+    // localStorage.setItem('users', JSON.stringify(existingUsers));
+
     // Dispatch an action to update the global state with the new user data
-    dispatch({
-      type: "SIGNUP_USER",
-      payload: { username, email }
-    });
-  
-    setSubmitted(true);
-    setError('');
+    // dispatch({
+    //   type: "SIGNUP_USER",
+    //   payload: { username, email }
+    // });
+
+    // setSubmitted(true);
+    // setError('');
   };
 
 
@@ -60,7 +63,7 @@ const Signup = () => {
     return (
       <div className="container">
         <h4 className='alert alert-success text-center text-capitalize'>Yay! Sign In Now.</h4>
-          <SignIn />
+        <SignIn />
       </div>
     );
   }

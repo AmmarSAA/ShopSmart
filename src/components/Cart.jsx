@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { GlobalContext } from '../Context/context';
 import CartItems from './CartItems';
+import Checkout from './Checkout';
 
 function Cart() {
   const [show, setShow] = useState(false);
@@ -40,6 +41,7 @@ function Cart() {
               ))}
             </div>
           )}
+          <Checkout />
         </Offcanvas.Body>
       </Offcanvas>
     </>

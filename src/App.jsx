@@ -1,9 +1,3 @@
-/***********************
-* File Name: App.jsx   *
-* Author: Ammar S.A.A  *
-* Output: Main Page    *
-***********************/
-
 import React, { useContext } from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -15,47 +9,36 @@ import NavigationMenu from "./components/NavigationMenu";
 import Footer from "./components/Footer";
 import NotFoundPage from "./components/404";
 import { LoginContext } from "./Context/Login-Context/login-context";
-import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignUpForm";
 
 export default function App() {
-
-  let { state, dispatch } = useContext(LoginContext);
+  const { userRole } = useContext(LoginContext);
 
   return (
     <>
-
+      {/* Common NavigationMenu for all routes */}
+      <NavigationMenu />
 
       {/* All routes */}
-
-      {
-        state.user ? (
-          <><><NavigationMenu />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/category/:categoryName" element={<CategoryPage />} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/products" element={<Products />} />
+        {userRole === "user" ? (
+          <>
+            <Route
+              path="/products/category/:categoryName"
+              element={<CategoryPage />}
+            />
             <Route path="/product/:productId" element={<ProductPage />} />
             <Route path="*" element={<Navigate to="/" replace={true} />} />
-          </Routes>
           </>
-          <Footer />
-          </>
-
         ) : (
-          <><><NavigationMenu />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes></>
-          <Footer /></>
+          <Route path="*" element={<NotFoundPage />} />
+        )}
+      </Routes>
 
-        )
-      }
-
+      {/* Common Footer for all routes */}
+      <Footer />
     </>
   );
 }
