@@ -7,7 +7,6 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-import { BsCartPlusFill } from 'react-icons/bs'
 
 function ProductCard({product}) {
   return (
@@ -22,7 +21,7 @@ function ProductCard({product}) {
           }
           </Card.Text>
           <Card.Text> <b>Price: </b>$ {product.price}</Card.Text>
-          <Link to={`/product/${product.id}`} style={{position:'absolute', bottom:'20%',right:'12px'}} className="btn btn-dark float-end"><BsCartPlusFill /></Link>
+          <Link to={`/product/${product.id}`} style={{position:'absolute', bottom:'20%',right:'12px'}} className="btn btn-outline-dark float-end">View Details</Link>
         </Card.Body>
       </Card>
     </div>

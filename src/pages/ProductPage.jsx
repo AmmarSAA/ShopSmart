@@ -12,6 +12,10 @@ import StarRatings from "react-star-ratings";
 import { getProduct } from "../services/apiService";
 import { GlobalContext } from '../Context/context';
 import Comment from "../components/Comments";
+import { BsCartPlusFill } from 'react-icons/bs'
+import Cart from '../components/Cart'
+import { Button } from "react-bootstrap";
+import { BsCart4 } from "react-icons/bs";
 
 export default function ProductPage() {
   const [count, setCount] = useState(1);
@@ -172,12 +176,14 @@ export default function ProductPage() {
                 </button>
               </div>
               <div className="mt-3">
-                <button className="btn btn-outline-success me-2" onClick={addToCart}>
-                  Add to Cart
-                </button>
-                {/* <button className="btn btn-outline-secondary" onClick={placeOrder}>
-                  Place Order
-                </button> */}
+                <Button variant="light" className="custom-button mx-3 d-flex align-items-center gap-2" href="#" onClick={addToCart}>
+                  <BsCartPlusFill  className="navbar-icon text-white" />
+                  <span className="d-block d-lg-inline text-white">Add To Cart</span>
+                </Button>
+                <Button variant="light" className="custom-button mx-3 d-flex align-items-center gap-2" href="#">
+                  <BsCart4 className="navbar-icon text-white" />
+                  <span className="d-block d-lg-inline text-white"><Cart /></span>
+                </Button>
               </div>
             </div>
           </div>
