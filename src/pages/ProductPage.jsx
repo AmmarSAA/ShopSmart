@@ -160,30 +160,32 @@ export default function ProductPage() {
                 <span className="ms-2 mt-2">{product.rating}</span>
               </div>
               <p><b>Stock Left:</b> {product.stock}</p>
-              <div className="btn-group">
-                <button
-                  className="btn btn-outline-danger me-2 px-4"
-                  onClick={() => setCount((prevCount) => Math.max(prevCount - 1, 0))}
-                >
-                  -
-                </button>
-                <div className="m-2">{count}</div>
-                <button
-                  className="btn btn-outline-primary ms-2 px-4"
-                  onClick={() => setCount((prevCount) => prevCount + 1)}
-                >
-                  +
-                </button>
-              </div>
-              <div className="mt-3">
-                <Button variant="light" className="custom-button mx-3 d-flex align-items-center gap-2" href="#" onClick={addToCart}>
-                  <BsCartPlusFill  className="navbar-icon text-white" />
-                  <span className="d-block d-lg-inline text-white">Add To Cart</span>
-                </Button>
-                <Button variant="light" className="custom-button mx-3 d-flex align-items-center gap-2" href="#">
-                  <BsCart4 className="navbar-icon text-white" />
-                  <span className="d-block d-lg-inline text-white"><Cart /></span>
-                </Button>
+              <div className="row col-6">
+                <div className="btn-group">
+                  <button
+                    className="btn btn-outline-danger me-2 px-4 d-flex align-items-center gap-2"
+                    onClick={() => setCount((prevCount) => Math.max(prevCount - 1, 0))}
+                  >
+                    -
+                  </button>
+                  <div className="m-2">{count}</div>
+                  <button
+                    className="btn btn-outline-primary ms-2 px-4 d-flex align-items-center gap-2"
+                    onClick={() => setCount((prevCount) => prevCount + 1)}
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="mt-3">
+                  <Button variant="light" className="custom-button d-flex align-items-center gap-2" href="#" onClick={addToCart}>
+                    <BsCartPlusFill className="navbar-icon text-white" />
+                    <span className="d-block d-lg-inline text-white">Add To Cart</span>
+                  </Button>
+                  <Button variant="light" className="custom-button d-flex align-items-center gap-2" href="#">
+                    <BsCart4 className="navbar-icon text-white" />
+                    <span className="d-block d-lg-inline text-white"><Cart /></span>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
