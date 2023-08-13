@@ -90,7 +90,7 @@ function NavigationMenu() {
             </NavDropdown>
           </Nav>
           <Nav>
-            {state.token !== undefined || null ? (
+            {state.token !== "undefined" || null ? (
               <>
                 <ButtonGroup aria-label="Basic example">
                   <ProfileForm />
