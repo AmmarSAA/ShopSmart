@@ -6,16 +6,25 @@ import { decodeToken } from "react-jwt";
 export const LoginContext = createContext();
 
 export default function LoginProvider({ children }) {
-  const storedToken = Cookies.get('token') || null;
-  const [state, dispatch] = useReducer(reducer, { token: storedToken, user: null });
+  const storedToken = Cookies.get("token") || undefined;
+  const decodedToken = decodeToken(storedToken);
+
+  const initialState = {
+    token: storedToken,
+    userRole: decodedToken?.role || null,
+    userName: decodedToken?.name || null,
+    userEmail: decodedToken?.email || null,
+    userProfilePic: decodedToken?.profilePic || null,
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     if (state.token) {
-      const decodedToken = decodeToken(state.token);
-      dispatch({ type: "LOGIN_USER", token: state.token, user: decodedToken });
+      Cookies.set("token", state.token);
+    } else {
+      Cookies.remove("token");
     }
-
-    Cookies.set('token', state.token);
   }, [state.token]);
 
   return (
