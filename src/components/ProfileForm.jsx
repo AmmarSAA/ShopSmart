@@ -13,7 +13,7 @@ import { LoginContext } from '../Context/Login-Context/login-context';
 
 export default function ProfileForm() {
   const [show, setShow] = useState(false);
-  const { state, userName } = useContext(LoginContext);
+  const { userName, state } = useContext(LoginContext);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -26,11 +26,11 @@ export default function ProfileForm() {
         onClick={handleShow}
       >
         <FaUserCircle className="navbar-icon text-white" />
-        <span className="d-none d-lg-inline text-white"> {userName}</span>
+        <span className="d-none d-lg-inline text-white"> {state.userName}</span>
       </Button>
 
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} centered>
-        <Modal.Header closeButton>{userName}</Modal.Header>
+        <Modal.Header closeButton>{state.userName}</Modal.Header>
         <Modal.Body style={{ padding: '20px' }}>
           <Profile />
         </Modal.Body>
