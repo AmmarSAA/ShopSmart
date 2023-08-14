@@ -2,23 +2,17 @@ export const reducer = (state, action) => {
     switch (action.type) {
         case "LOGIN_USER":
             return {
-                ...state,
-                token: action.token
-            }
+                token: action.token,
+                user: action.user,
+            };
 
-        case "LOGOUT_USER": 
+        case "LOGOUT_USER":
             return {
-                ...state,
-                token: undefined
-            }
-        case "SIGNUP_USER":
-            return {
-                ...state,
-                user : undefined
-            }
+                token: null,
+                user: null,
+            };
 
         default:
             return state;
     }
-
-}
+};

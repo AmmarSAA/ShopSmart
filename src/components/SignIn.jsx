@@ -9,6 +9,7 @@ const SignIn = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const { state, dispatch } = useContext(LoginContext);
 
@@ -20,29 +21,34 @@ const SignIn = () => {
       setError('Please fill in all fields.');
       return;
     }
-    const payload = { email, password }
+
+    setIsLoading(true);
+    setError(null);
+
+    const payload = { email, password };
     // Send the email and password to the server for signin
     axios
       .post("https://shopsmart-api.cyclic.app/api/users/signin", payload)
       .then((response) => {
-        Cookies.set('token',response.data.token)
+        Cookies.set('token', response.data.token);
         dispatch({
-          type: "LOGIN",
-          token: response.data.token
-        })
+          type: "LOGIN_USER",
+          token: response.data.token,
+        });
         setMessage(response.data.message);
+        setIsLoading(false);
       })
       .catch((error) => {
         setError(error.response?.data?.message || 'An error occurred');
+        setIsLoading(false);
       });
-
-    // Clear the error state
-    setError(null);
   };
 
   return (
     <div className="container">
-      {message ? (
+      {isLoading ? (
+        <h4 className='alert alert-info text-center text-capitalize'>Logging in...</h4>
+      ) : message ? (
         <h4 className='alert alert-success text-center text-capitalize'>{message}</h4>
       ) : error ? (
         <h4 className='alert alert-danger text-center text-capitalize'>{error}</h4>

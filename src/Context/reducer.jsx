@@ -18,11 +18,12 @@ export const reducer = (state, action) => {
       }
     }
 
-    case "DELETE_ITEM":
+    case "DELETE_ITEM": {
       return {
         ...state,
         cart: state.cart.filter(item => item.id !== action.payload.id)
       };
+    }
 
     case "INCREASE_ITEM": {
       return {

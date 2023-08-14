@@ -19,19 +19,17 @@ import Cart from './Cart';
 import { GlobalContext } from '../Context/context';
 import LoginForm from './LoginForm';
 import { LoginContext } from '../Context/Login-Context/login-context';
-import '../App.css';
 import SignupForm from './SignUpForm';
 import ProfileForm from './ProfileForm';
 
 function NavigationMenu() {
   const [categories, setCategories] = useState([]);
+  const { state: loginState, dispatch: loginDispatch } = useContext(LoginContext);
+  const { state: globalState, dispatch: globalDispatch } = useContext(GlobalContext);
 
   const logOutUser = () => {
-    dispatch({ type: "LOGOUT_USER" });
+    loginDispatch({ type: "LOGOUT_USER" });
   }
-
-  const { state, dispatch } = useContext(LoginContext);
-  const { add } = useContext(GlobalContext);
 
   useEffect(() => {
     // Fetch categories from the API
@@ -90,20 +88,18 @@ function NavigationMenu() {
             </NavDropdown>
           </Nav>
           <Nav>
-            {state.token !== "undefined" || null ? (
-              <>
-                <ButtonGroup aria-label="Basic example">
-                  <ProfileForm />
-                  <Button variant="light" className="custom-button mx-3 d-flex align-items-center gap-2" href="#">
-                    <BsCart4 className="navbar-icon text-white" />
-                    <span className="d-block d-lg-inline"> <Cart /></span>
-                  </Button>
-                  <Button variant="light" className="custom-button d-flex align-items-center gap-2" onClick={logOutUser}>
-                    <PiSignOut className="navbar-icon text-white" />
-                    <span className="d-none d-lg-inline text-white"> Sign Out</span>
-                  </Button>
-                </ButtonGroup>
-              </>
+            {loginState.token !== null && loginState.token !== undefined && loginState.token !== "undefined" && loginState.token !== "null" && loginState.token !== "" && loginState.token !== " " ? (
+              <ButtonGroup aria-label="Basic example">
+                <ProfileForm />
+                <Button variant="light" className="custom-button mx-3 d-flex align-items-center gap-2" href="#">
+                  <BsCart4 className="navbar-icon text-white" />
+                  <span className="d-block d-lg-inline"> <Cart /></span>
+                </Button>
+                <Button variant="light" className="custom-button d-flex align-items-center gap-2" onClick={logOutUser}>
+                  <PiSignOut className="navbar-icon text-white" />
+                  <span className="d-none d-lg-inline text-white"> Sign Out</span>
+                </Button>
+              </ButtonGroup>
             ) : (
               <ButtonGroup aria-label="Basic example">
                 <SignupForm />
