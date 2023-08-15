@@ -17,7 +17,7 @@ import UpdateCategory from './UpdateCategory';
 import DeleteCategory from './DeleteCategory';
 import DeleteBrand from './DeleteBrand';
 import DeleteUser from './DeleteUser';
-import showUsers from './ShowUsers';
+import Users from './ShowUsers';
 import { Link } from 'react-router-dom';
 import './app';
 import './style.css'
@@ -47,7 +47,7 @@ function NavbarAdmin() {
 								<NavDropdown.Item href="#action/3.2"><UpdateUser /></NavDropdown.Item>
 								<NavDropdown.Item href="#action/3.3"><DeleteUser /></NavDropdown.Item>
 								<NavDropdown.Divider />
-								<NavDropdown.Item href="/admin/showusers">View All</NavDropdown.Item>
+								<NavDropdown.Item href="/admin/users">View All</NavDropdown.Item>
 							</NavDropdown>
 							<NavDropdown title="Brand" className='mx-2' id="basic-nav-dropdown">
 								<NavDropdown.Item href="#action/3.1"><AddBrand /></NavDropdown.Item>
@@ -57,7 +57,7 @@ function NavbarAdmin() {
 								<NavDropdown.Item href="#action/3.3"><DeleteBrand /></NavDropdown.Item>
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="#action/3.4">
-									<Link to='/admin/showbrands' className="text-decoration-none mx-2 nav-color">View All</Link>
+									<Link to='/admin/brand' className="text-decoration-none mx-2 nav-color">View All</Link>
 								</NavDropdown.Item>
 							</NavDropdown>
 							<NavDropdown title="Category" className='' id="basic-nav-dropdown">
@@ -68,7 +68,7 @@ function NavbarAdmin() {
 								<NavDropdown.Item href="#action/3.3"><DeleteCategory /></NavDropdown.Item>
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="#action/3.4">
-									<Link to='/admin/showcategory' className='text-decoration-none ms-3 text-dark'>View All</Link>
+									<Link to='/admin/category' className='text-decoration-none ms-3 text-dark'>View All</Link>
 								</NavDropdown.Item>
 							</NavDropdown>
 							<NavDropdown title="Order" id="basic-nav-dropdown">

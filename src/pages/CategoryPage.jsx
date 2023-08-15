@@ -30,13 +30,13 @@ export default function CategoryPage() {
           {
             products.length > 0 ? (
               products.map((val, key) => (
-                <ProductCard key={key} product={val}/>
+                <ProductCard key={key} product={val} />
               ))
             ) : (
               <div className="d-flex justify-content-center align-items-center"
-                    style={{ width: '100vw', height: '60vh' }}>
-                    <Spinner animation="grow" />
-                    </div>
+                style={{ width: '100vw', height: '60vh' }}>
+                <Spinner animation="grow" />
+              </div>
             )
           }
         </div>
@@ -44,4 +44,3 @@ export default function CategoryPage() {
     </>
   );
 }
- 
