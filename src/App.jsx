@@ -1,3 +1,9 @@
+/************************
+* File Name: App.jsx 	  *
+* Author: Ammar S.A.A 	*
+* Output: Routes        *
+************************/
+
 import React, { useContext } from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -9,9 +15,13 @@ import NavigationMenu from "./components/NavigationMenu";
 import Footer from "./components/Footer";
 import NotFoundPage from "./components/404";
 import { LoginContext } from "./Context/Login-Context/login-context";
+import AdminHome from "./pages/admin/Home";
+import Category from "./pages/admin/Category";
+import Users from "./pages/admin/Users";
+import Brand from "./pages/admin/Brand";
 
 export default function App() {
-  const { userRole } = useContext(LoginContext);
+  const { state } = useContext(LoginContext);
 
   return (
     <>
@@ -23,7 +33,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
-        {userRole === "user" ? (
+        {state.userRole === "user" ? (
           <>
             <Route
               path="/products/category/:categoryName"
@@ -31,9 +41,20 @@ export default function App() {
             />
             <Route path="/product/:productId" element={<ProductPage />} />
             <Route path="*" element={<Navigate to="/" replace={true} />} />
+            <Route path="/product/:productId" element={<ProductPage />} />
+            <Route path="*" element={<Navigate to="/" replace={true} />} />
+          </>
+        ) : state.userRole === "admin" ? (
+          <>
+            <Route path="/admin" element={<AdminHome />}/>
+            <Route path="/admin/users" element={<Users />}/>
+            <Route path="/admin/brand" element={<Brand />}/>
+            <Route path="/admin/category" element={<Category />}/>
+            {/* <Route path="/admin/orders" element={<Orders />}/> */}
+            <Route path="*" element={<Navigate to="/" replace={true} />} />
           </>
         ) : (
-          <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundPage />} />
         )}
       </Routes>
 

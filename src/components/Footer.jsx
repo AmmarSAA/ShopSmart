@@ -4,7 +4,6 @@
 * Output: Footer         *
 *************************/
 
-
 import React, { useEffect, useState } from 'react';
 import { FaTwitterSquare, FaFacebookSquare, FaInstagramSquare, FaLinkedin, FaRegHandshake } from 'react-icons/fa';
 import { BiSupport } from 'react-icons/bi';

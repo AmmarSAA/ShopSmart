@@ -103,7 +103,7 @@
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
-  color: #07261E;
+  color: #07261E !important;
 }
 
 /* Partners section */

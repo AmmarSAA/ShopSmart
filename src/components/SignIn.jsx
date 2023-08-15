@@ -1,3 +1,9 @@
+/********************************
+* File Name: SignIn.jsx 		    *
+* Author: Ammar S.A.A 			    *
+* Output: SignIn Modal Content	*
+********************************/
+
 import React, { useState, useContext } from 'react';
 import '../App.css';
 import { LoginContext } from '../Context/Login-Context/login-context';

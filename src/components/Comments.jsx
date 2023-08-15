@@ -1,3 +1,9 @@
+/******************************
+* File Name: Comments.jsx 		*
+* Author: Ammar S.A.A 			  *
+* Output: Comments Component 	*
+*******************************/
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ReactPaginate from "react-paginate";

@@ -1,3 +1,9 @@
+/********************************
+* File Name: login-context.jsx 	*
+* Author: Ammar S.A.A 	      	*
+* Output: LoginContext          *
+********************************/
+
 import React, { useReducer, createContext, useEffect } from "react";
 import { reducer } from './reducer-context';
 import Cookies from "js-cookie";

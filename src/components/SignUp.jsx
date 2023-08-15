@@ -1,3 +1,9 @@
+/********************************
+* File Name: SignUp.jsx 		    *
+* Author: Ammar S.A.A 			    *
+* Output: SignUp Modal Content	*
+********************************/
+
 import React, { useContext, useState } from 'react';
 import { LoginContext } from '../Context/Login-Context/login-context';
 import axios from 'axios';
