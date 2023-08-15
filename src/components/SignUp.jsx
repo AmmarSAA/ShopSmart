@@ -1,77 +1,63 @@
-/*************************
-* File Name: SignUp.jsx  *
-* Author: Ammar S.A.A    *
-* Output: Sign up form   *
-*************************/
-
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { LoginContext } from '../Context/Login-Context/login-context';
-import { useContext } from 'react';
-import { useState } from 'react';
-import SignIn from './SignIn';
 import axios from 'axios';
+import SignIn from "./SignIn";
 
 const Signup = () => {
-
-  const { state, dispatch } = useContext(LoginContext);
+  const { dispatch } = useContext(LoginContext);
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSignup = (event) => {
+  const handleSignup = async (event) => {
     event.preventDefault();
     const username = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    // if (!email || !password || !username) {
-    //   setError('Please fill in all the fields.');
-    //   console.log("fill in all the fields.");
-    //   return;
-    // }
+    if (!email || !password || !username) {
+      setErrorMessage('Please fill in all the fields.');
+      console.log("fill in all the fields.");
+      return;
+    }
 
-    // const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+    try {
+      setIsLoading(true);
+      // Make a POST request to the backend for user signup
+      const response = await axios.post("https://shopsmart-api.cyclic.app/api/users/signup", {
+        name: username,
+        email: email,
+        password: password,
+      });
 
-    // // Check if a user with the same email or username already exists
-    // const userExists = existingUsers.some((user) => user.email === email || user.username === username);
-
-    axios.post("http://localhost:5000/api/users/signup").then((json) => console.log(json.data)).catch(err => console.log(err))
-
-    // if (userExists) {
-    //   setError('An account with the same email or username already exists.');
-    //   console.log("Account with the same email or username already exists.");
-    //   return;
-    // }
-
-    // // Add the new user to the existing users array
-    // existingUsers.push({ username, email, password });
-    // // Save the updated users array back to local storage
-    // localStorage.setItem('users', JSON.stringify(existingUsers));
-
-    // Dispatch an action to update the global state with the new user data
-    // dispatch({
-    //   type: "SIGNUP_USER",
-    //   payload: { username, email }
-    // });
-
-    // setSubmitted(true);
-    // setError('');
+      // Handle success
+      console.log("User signed up successfully:", response.data);
+      setSubmitted(true);
+      setErrorMessage('');
+      setIsLoading(false);
+    } catch (error) {
+      // Handle error
+      console.error("Error signing up:", error);
+      setErrorMessage('An error occurred.');
+      setIsLoading(false);
+    }
   };
 
-
   if (submitted) {
-    console.log("signed up successfully");
     return (
       <div className="container">
         <h4 className='alert alert-success text-center text-capitalize'>Yay! Sign In Now.</h4>
         <SignIn />
       </div>
     );
-  }
-
-  else {
+  } else {
     return (
       <div className="container" id='form'>
-        {error && <h4 className='alert alert-danger text-center text-capitalize'>{error}</h4>}
+        {isLoading ? (
+          <h4 className='alert alert-info text-center text-capitalize'>Signing Up...</h4>
+        ) : errorMessage ? (
+          <h4 className='alert alert-danger text-center text-capitalize'>{errorMessage}</h4>
+        ) : null}
         <h2>Sign Up</h2>
         <h6>To avail exclusive offers</h6>
         <form onSubmit={handleSignup}>
@@ -91,6 +77,7 @@ const Signup = () => {
         </form>
       </div>
     );
-  };
+  }
 }
+
 export default Signup;
