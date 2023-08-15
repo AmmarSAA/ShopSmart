@@ -14,7 +14,7 @@
 
 /* Add User */
 
-.form {
+.form1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -25,7 +25,7 @@
   position: relative;
 }
 
-.title {
+.title1 {
   font-size: 28px;
   color: royalblue;
   font-weight: 600;
@@ -36,8 +36,7 @@
   padding-left: 30px;
 }
 
-.title::before,
-.title::after {
+.title1::before,.title1::after {
   position: absolute;
   content: "";
   height: 16px;
@@ -47,29 +46,28 @@
   background-color: royalblue;
 }
 
-.title::before {
+.title1::before {
   width: 18px;
   height: 18px;
   background-color: royalblue;
 }
 
-.title::after {
+.title1::after {
   width: 18px;
   height: 18px;
   animation: pulse 1s linear infinite;
 }
 
-.message,
-.signin {
+.message1, .signin1 {
   color: rgba(88, 87, 87, 0.822);
   font-size: 14px;
 }
 
-.signin {
+.signin1 {
   text-align: center;
 }
 
-.signin a {
+.signin1 a {
   color: royalblue;
 }
 
@@ -77,17 +75,17 @@
   text-decoration: underline royalblue;
 }
 
-.flex {
+.flex1 {
   display: flex;
   width: 100%;
   gap: 6px;
 }
 
-.form label {
+.form1 label {
   position: relative;
 }
 
-.form label .input {
+.form1 label .input1 {
   width: 100%;
   padding: 10px 10px 20px 10px;
   outline: 0;
@@ -95,7 +93,7 @@
   border-radius: 10px;
 }
 
-.form label .input+span {
+.form1 label .input1 + span {
   position: absolute;
   left: 10px;
   top: 15px;
@@ -105,27 +103,22 @@
   transition: 0.3s ease;
 }
 
-.form label .input:placeholder-shown+span {
+.form1 label .input1:placeholder-shown + span {
   top: 15px;
   font-size: 0.9em;
 }
 
-.form label .input:focus+span,
-.form label .input:valid+span {
-  top: 30px;
+.form1 label .input1:focus + span,.form1 label .input1:valid + span {
+  top: 0px;
   font-size: 0.7em;
   font-weight: 600;
 }
 
-.form label .input:valid+span {
-  margin-top: 5px;
-}
-
-.form label .input:valid+span {
+.form1 label .input1:valid + span {
   color: green;
 }
 
-.submit {
+.submit1 {
   border: none;
   outline: none;
   background-color: royalblue;
@@ -136,8 +129,9 @@
   transform: .3s ease;
 }
 
-.submit:hover {
+.submit1:hover {
   background-color: rgb(56, 90, 194);
+  cursor: pointer;
 }
 
 @keyframes pulse {
@@ -151,7 +145,6 @@
     opacity: 0;
   }
 }
-
 /* End Add User */
 
 /* User Profile */
