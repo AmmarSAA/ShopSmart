@@ -39,7 +39,7 @@ function NavbarAdmin() {
 						<Nav className="me-auto">
 							<Nav.Link>
 								<Link className="text-decoration-none mx-2 nav-color" to="/admin">
-									Home
+									Dashboard
 								</Link>
 							</Nav.Link>
 							<NavDropdown title="User" id="collapsible-nav-dropdown" className="d-flex">
