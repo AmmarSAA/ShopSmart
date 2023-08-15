@@ -47,7 +47,7 @@ const SignIn = () => {
   return (
     <div className="container">
       {isLoading ? (
-        <h4 className='alert alert-info text-center text-capitalize'>Logging in...</h4>
+        <h4 className='alert alert-info text-center text-capitalize'>Signing in...</h4>
       ) : message ? (
         <h4 className='alert alert-success text-center text-capitalize'>{message}</h4>
       ) : error ? (
