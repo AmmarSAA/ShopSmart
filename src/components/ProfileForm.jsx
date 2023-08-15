@@ -13,7 +13,7 @@ import { LoginContext } from '../Context/Login-Context/login-context';
 
 export default function ProfileForm() {
   const [show, setShow] = useState(false);
-  const { userName, state } = useContext(LoginContext);
+  const { state } = useContext(LoginContext);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

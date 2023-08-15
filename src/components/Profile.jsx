@@ -8,7 +8,7 @@ import React, { useContext, useEffect } from 'react';
 import { LoginContext } from '../Context/Login-Context/login-context';
 
 const Profile = () => {
-    const { userName, userEmail, userRole, userProfilePic, state } = useContext(LoginContext);
+    const { state } = useContext(LoginContext);
 
     return (
         <div className="container">
