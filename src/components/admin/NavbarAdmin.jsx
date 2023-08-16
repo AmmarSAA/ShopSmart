@@ -2,11 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import './style.css'
 import AddUser from './AddUser'
 import AddCategory from './AddCategory';
@@ -17,7 +13,6 @@ import UpdateCategory from './UpdateCategory';
 import DeleteCategory from './DeleteCategory';
 import DeleteBrand from './DeleteBrand';
 import DeleteUser from './DeleteUser';
-import Users from './ShowUsers';
 import { Link } from 'react-router-dom';
 import './app';
 import './style.css'
@@ -83,20 +78,6 @@ function NavbarAdmin() {
 								</NavDropdown.Item>
 							</NavDropdown>
 						</Nav>
-						{/* <Form inline>
-							<Row>
-								<Col xs="auto">
-									<Form.Control
-										type="text"
-										placeholder="Search"
-										className="mt-1 p-2 pb-2 m-0"
-									/>
-								</Col>
-								<Col xs="auto">
-									<Button type="submit" className='custom-button px-3 d-flex align-items-center'><FaSearch /></Button>
-								</Col>
-							</Row>
-						</Form> */}
 						<ButtonGroup aria-label="Basic example">
 							<ProfileForm />
 							<Button variant="light" className="custom-button d-flex align-items-center gap-2" onClick={logOutUser}>
