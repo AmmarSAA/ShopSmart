@@ -36,7 +36,8 @@
   padding-left: 30px;
 }
 
-.title1::before,.title1::after {
+.title1::before,
+.title1::after {
   position: absolute;
   content: "";
   height: 16px;
@@ -58,7 +59,8 @@
   animation: pulse 1s linear infinite;
 }
 
-.message1, .signin1 {
+.message1,
+.signin1 {
   color: rgba(88, 87, 87, 0.822);
   font-size: 14px;
 }
@@ -108,7 +110,8 @@
   font-size: 0.9em;
 }
 
-.form1 label .input1:focus + span,.form1 label .input1:valid + span {
+.form1 label .input1:focus + span,
+.form1 label .input1:valid + span {
   top: 0px;
   font-size: 0.7em;
   font-weight: 600;
@@ -126,7 +129,7 @@
   border-radius: 10px;
   color: #fff;
   font-size: 16px;
-  transform: .3s ease;
+  transform: 0.3s ease;
 }
 
 .submit1:hover {
@@ -202,4 +205,24 @@
   flex: 1;
   text-decoration: none;
   color: #626262;
+}
+/* ShowBrand.jsx Styling */
+.brand-image {
+  max-width: 100px; /* Adjust the image width as needed */
+  height: auto;
+}
+
+/* Truncate ID column */
+.text-truncate {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Center-align actions column */
+.text-center.justify-content-center.align-items-center {
+  display: flex-row;
+  justify-content: center;
+  align-items: center;
 }

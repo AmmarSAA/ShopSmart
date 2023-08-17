@@ -1,10 +1,16 @@
+/******************************
+* File Name: UpdateBrand.jsx 	*
+* Author: Ammar S.A.A 			  *
+* Output: Update Brand Modal  *
+******************************/
+
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./style.css";
 import axios from 'axios';
 
-function UpdateBrand({ setBrands, brand }) {
+function UpdateBrand({ setBrands, brand, Variant, ClassForButton, Name, ClassForName, Icon, ClassForIcon }) {
   const [show, setShow] = useState(false);
   const [updatedName, setUpdatedName] = useState(""); // State to hold the updated brand name
   const [updatedImage, setUpdatedImage] = useState(null); // State to hold the updated image file
@@ -43,7 +49,15 @@ function UpdateBrand({ setBrands, brand }) {
 
   return (
     <>
-      
+
+      <Button variant={Variant} className={ClassForButton} onClick={handleShow}>
+        {Icon && <Icon className={ClassForIcon} />} {/* Conditional rendering of the icon */}
+        {Name && <span className={ClassForName}> {Name}</span>} {/* Conditional rendering of the name */}
+      </Button>
+      {/* <Button variant="white" className="btn align-items-center" onClick={handleShow}>
+        <BsPencilFill className="navbar-icon" />
+        <span className="d-none d-lg-inline"> Update Brand</span>
+      </Button> */}
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Body className="d-flex align-items-center justify-content-center">

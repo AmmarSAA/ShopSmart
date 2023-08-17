@@ -12,7 +12,7 @@ import { storage } from "../../utils/firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import UpdateBrand from "./UpdateBrand";
 
-function AddBrand() {
+function AddBrand({ Variant, ClassForButton, Name, ClassForName, Icon, ClassForIcon }) {
   const [show, setShow] = useState(false);
   const [brandName, setBrandName] = useState("");
   const [brandImage, setBrandImage] = useState("");
@@ -73,8 +73,10 @@ function AddBrand() {
 
   return (
     <>
-      <Button variant="white" onClick={handleShow}>
-        Add Brand
+
+      <Button variant={Variant} className={ClassForButton} onClick={handleShow}>
+        {Icon && <Icon className={ClassForIcon} />} {/* Conditional rendering of the icon */}
+        {Name && <span className={ClassForName}> {Name}</span>} {/* Conditional rendering of the name */}
       </Button>
 
       <Modal show={show} onHide={handleClose} centered>

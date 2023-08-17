@@ -21,7 +21,7 @@ export default function Brand() {
             <div className="h4 p-3">All Brands</div>
           </div>
           <div className="col-4">
-            <Form inline>
+            <Form inline="true">
               <Row>
                 <Col xs="auto">
                   <Form.Control

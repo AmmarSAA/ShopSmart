@@ -19,6 +19,10 @@ import './style.css'
 import { PiSignOut } from "react-icons/pi";
 import ProfileForm from "../../components/ProfileForm";
 import { ButtonGroup } from "react-bootstrap";
+import { AiFillDelete } from "react-icons/ai";
+import React, { useState } from 'react';
+import { BsFillPencilFill } from 'react-icons/bs';
+import { AiOutlinePlusSquare } from "react-icons/ai";
 
 function NavbarAdmin() {
 	const logOutUser = () => {
@@ -44,12 +48,37 @@ function NavbarAdmin() {
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="/admin/users">View All</NavDropdown.Item>
 							</NavDropdown>
-							<NavDropdown title="Brand" className='mx-2' id="basic-nav-dropdown">
-								<NavDropdown.Item href="#"><AddBrand /></NavDropdown.Item>
+							<NavDropdown title="Brand" className='' id="basic-nav-dropdown">
 								<NavDropdown.Item href="#">
-									<UpdateBrand />
+									<AddBrand
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Add Brand"
+										ClassForName=""
+										Icon={AiOutlinePlusSquare}
+										ClassForIcon="navbar-icon"
+									/>
 								</NavDropdown.Item>
-								<NavDropdown.Item href="#"><DeleteBrand /></NavDropdown.Item>
+								<NavDropdown.Item href="#">
+									<UpdateBrand
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Update Brand"
+										ClassForName=""
+										Icon={BsFillPencilFill}
+										ClassForIcon="navbar-icon"
+									/>
+								</NavDropdown.Item>
+								<NavDropdown.Item href="#">
+									<DeleteBrand
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Delete Brand"
+										ClassForName=""
+										Icon={AiFillDelete}
+										ClassForIcon="navbar-icon"
+									/>
+								</NavDropdown.Item>
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="/admin/brand">
 									View All

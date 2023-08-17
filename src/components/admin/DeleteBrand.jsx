@@ -10,10 +10,9 @@ import Modal from 'react-bootstrap/Modal';
 import './style.css';
 import axios from 'axios';
 
-export default function DeleteBrand({ setBrands, brandID, initialBrandName }) {
+export default function DeleteBrand({ setBrands, brandID, initialBrandName, Variant, ClassForButton, Name, ClassForName, Icon, ClassForIcon }) {
   const [show, setShow] = useState(false);
   const [brandName, setBrandName] = useState(initialBrandName || ''); // Use the initialBrandName if available
-
   const handleClose = () => {
     setShow(false);
     setBrandName(initialBrandName || ''); // Reset the brandName input on close
@@ -38,10 +37,15 @@ export default function DeleteBrand({ setBrands, brandID, initialBrandName }) {
 
   return (
     <>
-      <Button variant="white" onClick={handleShow}>
-        Delete Brand
-      </Button>
 
+      <Button variant={Variant} className={ClassForButton} onClick={handleShow}>
+        {Icon && <Icon className={ClassForIcon} />} {/* Conditional rendering of the icon */}
+        {Name && <span className={ClassForName}> {Name}</span>} {/* Conditional rendering of the name */}
+      </Button>
+      {/* <Button variant="white" className="btn align-items-center" onClick={handleShow}>
+        <AiFillDelete className="navbar-icon" />
+        <span className="d-none d-lg-inline"> Delete Brand</span>
+      </Button> */}
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Body className="d-flex align-items-center justify-content-center">
           <form className="form1">
