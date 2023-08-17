@@ -1,64 +1,87 @@
-/******************************
-* File Name: UpdateBrand.jsx 	*
-* Author: Ammar S.A.A 			  *
-* Output: Update Brand Modal  *
-******************************/
-
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./style.css";
-import AddBrand from "./AddBrand";
+import axios from 'axios';
 
-function UpdateBrand() {
+function UpdateBrand({ setBrands, brand }) {
   const [show, setShow] = useState(false);
+  const [updatedName, setUpdatedName] = useState(""); // State to hold the updated brand name
+  const [updatedImage, setUpdatedImage] = useState(null); // State to hold the updated image file
+  const [brandID, setBrandID] = useState(""); // State to hold the brand ID
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    if (brand) {
+      setBrandID(brand._id); // Set the brand ID when the modal is shown
+    } else {
+      setBrandID(null);
+    }
+    setShow(true);
+  };
+
+  const updateBrand = () => {
+    if (brandID && (updatedName || updatedImage)) {
+      const formData = new FormData();
+      formData.append('image', updatedImage);
+
+      axios.put(`http://localhost:5000/api/brand/updateBrand`, {
+        _id: brandID,
+        Name: updatedName,
+        Image: updatedImage ? formData : brand.image
+      })
+        .then((response) => {
+          console.log(response.data.message);
+          setBrands(prevBrands => prevBrands.map(b => b._id === brand._id ? { ...b, name: updatedName } : b));
+          setShow(false);
+        })
+        .catch((error) => {
+          console.error("Error updating brand:", error.message);
+        });
+    }
+  }
 
   return (
     <>
-      <Button variant="white" onClick={handleShow}>
-        Update Brand
-      </Button>
+      
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Body className="d-flex align-items-center justify-content-center">
           <form className="form1">
-            <p className="title1">Brand </p>
-            <p className="message1">Update Existing Brand. </p>
-            <div className="flex1">
-              <label>
-                <input className="input1 pb-1" type="text" placeholder="" required="" />
-                <span>ID</span>
-              </label>
-              <label>
-                <input className="input1 pb-1" type="text" placeholder="" required="" />
-                <span>Brand</span>
-              </label>
-            </div>
-            {/* <label>
+            <p className="title1">Brand</p>
+            <p className="message1">Update Existing Brand.</p>
+            <label>
               <input
-                className="input1"
+                className="input1 pb-1"
                 type="text"
-                placeholder=""
-                required=""
+                placeholder="Enter Brand ID to Update"
+                value={brandID}
+                onChange={(e) => setBrandID(e.target.value)}
+                required={true}
+              />
+              <span>Brand ID</span>
+            </label>
+            <label>
+              <input
+                className="input1 pb-1"
+                type="text"
+                placeholder="Enter Updated Brand Name"
+                value={updatedName || brand?.name}
+                onChange={(e) => setUpdatedName(e.target.value)}
+                required
               />
               <span>Brand</span>
-            </label> */}
+            </label>
             <label>
               <input
                 className="input1 pt-3 pb-1 form-control"
                 type="file"
                 placeholder=""
-                required=""
+                onChange={(e) => setUpdatedImage(e.target.files[0])}
               />
               <span>Image</span>
             </label>
-            <button className="submit1">Add New</button>
-            <p className="signin1">
-              Wanna Add Brand? <a href="#" className="btn-sm"><AddBrand /></a>{" "}
-            </p>
+            <button className="submit1" onClick={updateBrand}>Update</button>
           </form>
         </Modal.Body>
       </Modal>
