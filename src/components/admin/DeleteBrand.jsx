@@ -7,13 +7,34 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import './style.css'
+import './style.css';
+import axios from 'axios';
 
-function DeleteBrand() {
+export default function DeleteBrand({ setBrands, brandID, initialBrandName }) {
   const [show, setShow] = useState(false);
+  const [brandName, setBrandName] = useState(initialBrandName || ''); // Use the initialBrandName if available
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setBrandName(initialBrandName || ''); // Reset the brandName input on close
+  };
+
   const handleShow = () => setShow(true);
+
+  const deleteBrand = () => {
+    axios.delete(`http://localhost:5000/api/brand/deleteBrand`, {
+      data: { Name: brandName } // Sending the _id to delete the brand
+    })
+      .then((response) => {
+        console.log(response.data.message);
+        // Update the state after successful deletion
+        setBrands(prevBrands => prevBrands.filter(brand => brand._id !== brandID));
+        setShow(false);
+      })
+      .catch((error) => {
+        console.error("Error deleting brand:", error.message);
+      });
+  }
 
   return (
     <>
@@ -24,45 +45,26 @@ function DeleteBrand() {
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Body className="d-flex align-items-center justify-content-center">
           <form className="form1">
-            <p className="title1">Brand </p>
-            <p className="message1">Delete Existing Brand. </p>
-            {/* <div className="flex1">
-              <label>
-                <input className="input1" type="text" placeholder="" required="" />
-                <span>Firstname</span>
-              </label>
-              <label>
-                <input className="input1" type="text" placeholder="" required="" />
-                <span>Lastname</span>
-              </label>
-            </div> */}
+            <p className="title1">Brand</p>
+            <p className="message1">Delete Existing Brand.</p>
+            <input
+              hidden="true"
+              value={brandID}
+            />
             <label>
               <input
                 className="input1 pb-1"
                 type="text"
-                placeholder=""
-                required=""
+                placeholder="Enter Brand Name"
+                value={brandName}
+                onChange={(e) => setBrandName(e.target.value)}
               />
-              <span>ID</span>
+              <span>Name</span>
             </label>
-            {/* <label>
-              <input
-                className="input1 pt-3 pb-1 form-control"
-                type="file"
-                placeholder=""
-                required=""
-              />
-              <span>Image</span>
-            </label> */}
-            <button className="submit1">Delete</button>
-            {/* <p className="signin1">
-              Wanna Update Brand? <a href="#" className="btn-sm"><UpdateBrand /></a>{" "}
-            </p> */}
+            <button className="submit1" onClick={deleteBrand}>Delete</button>
           </form>
         </Modal.Body>
       </Modal>
     </>
   );
 }
-
-export default DeleteBrand;
