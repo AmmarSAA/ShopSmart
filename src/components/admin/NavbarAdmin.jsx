@@ -38,40 +38,40 @@ function NavbarAdmin() {
 								</Link>
 							</Nav.Link>
 							<NavDropdown title="User" id="collapsible-nav-dropdown" className="d-flex">
-								<NavDropdown.Item href="#action/3.1"><AddUser /></NavDropdown.Item>
-								<NavDropdown.Item href="#action/3.2"><UpdateUser /></NavDropdown.Item>
-								<NavDropdown.Item href="#action/3.3"><DeleteUser /></NavDropdown.Item>
+								<NavDropdown.Item href="#"><AddUser /></NavDropdown.Item>
+								<NavDropdown.Item href="#"><UpdateUser /></NavDropdown.Item>
+								<NavDropdown.Item href="#"><DeleteUser /></NavDropdown.Item>
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="/admin/users">View All</NavDropdown.Item>
 							</NavDropdown>
 							<NavDropdown title="Brand" className='mx-2' id="basic-nav-dropdown">
-								<NavDropdown.Item href="#action/3.1"><AddBrand /></NavDropdown.Item>
-								<NavDropdown.Item href="#action/3.2">
+								<NavDropdown.Item href="#"><AddBrand /></NavDropdown.Item>
+								<NavDropdown.Item href="#">
 									<UpdateBrand />
 								</NavDropdown.Item>
-								<NavDropdown.Item href="#action/3.3"><DeleteBrand /></NavDropdown.Item>
+								<NavDropdown.Item href="#"><DeleteBrand /></NavDropdown.Item>
 								<NavDropdown.Divider />
-								<NavDropdown.Item href="#action/3.4">
-									<Link to='/admin/brand' className="text-decoration-none mx-2 nav-color">View All</Link>
+								<NavDropdown.Item href="/admin/brand">
+									View All
 								</NavDropdown.Item>
 							</NavDropdown>
 							<NavDropdown title="Category" className='' id="basic-nav-dropdown">
-								<NavDropdown.Item href="#action/3.1"><AddCategory /></NavDropdown.Item>
-								<NavDropdown.Item href="#action/3.2">
+								<NavDropdown.Item href="#"><AddCategory /></NavDropdown.Item>
+								<NavDropdown.Item href="#">
 									<UpdateCategory />
 								</NavDropdown.Item>
-								<NavDropdown.Item href="#action/3.3"><DeleteCategory /></NavDropdown.Item>
+								<NavDropdown.Item href="#"><DeleteCategory /></NavDropdown.Item>
 								<NavDropdown.Divider />
-								<NavDropdown.Item href="#action/3.4">
+								<NavDropdown.Item href="#">
 									<Link to='/admin/category' className='text-decoration-none ms-3 text-dark'>View All</Link>
 								</NavDropdown.Item>
 							</NavDropdown>
 							<NavDropdown title="Order" id="basic-nav-dropdown">
-								<NavDropdown.Item href="#action/3.1">Add Order</NavDropdown.Item>
-								<NavDropdown.Item href="#action/3.2">
+								<NavDropdown.Item href="#">Add Order</NavDropdown.Item>
+								<NavDropdown.Item href="#">
 									Update Order
 								</NavDropdown.Item>
-								<NavDropdown.Item href="#action/3.3">Delete Order</NavDropdown.Item>
+								<NavDropdown.Item href="#">Delete Order</NavDropdown.Item>
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="/admin/orders" className="text-decoration-none mx-2 nav-color">
 									View All
