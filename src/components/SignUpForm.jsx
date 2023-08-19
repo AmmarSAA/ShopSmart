@@ -16,7 +16,7 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 export default function SignupForm() {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => { setShow(false), window.location.reload() };
   const handleShow = () => setShow(true);
 
   return (
