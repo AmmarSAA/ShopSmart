@@ -34,7 +34,7 @@ const SignIn = () => {
     const payload = { email, password };
     // Send the email and password to the server for signin
     axios
-      .post("https://shopsmart-api.cyclic.app/api/users/signin", payload)
+      .post("http://localhost:5000/api/users/signin", payload)
       .then((response) => {
         Cookies.set('token', response.data.token);
         dispatch({

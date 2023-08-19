@@ -40,7 +40,7 @@ function AddBrand({ Variant, ClassForButton, Name, ClassForName, Icon, ClassForI
             formData.append("Image", url);
             axios
               .post(
-                `https://shopsmart-api.cyclic.app/api/brand/createBrand`,
+                `http://localhost:5000/api/brand/createBrand`,
                 formData
               )
               .then((json) => {

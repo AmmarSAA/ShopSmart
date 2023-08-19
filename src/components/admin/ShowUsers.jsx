@@ -7,7 +7,7 @@ export default function ShowUsers() {
 
   const [users, setUsers] = useState([])
   useEffect(() => {
-    axios.get('https://shopsmart-api.cyclic.app/api/users/getUsers')
+    axios.get('http://localhost:5000/api/users/getUsers')
       .then((json) => setUsers(json.data.users))
       .catch((err) => console.log(err))
   }, [users])
