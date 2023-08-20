@@ -85,11 +85,36 @@ function NavbarAdmin() {
 								</NavDropdown.Item>
 							</NavDropdown>
 							<NavDropdown title="Category" className='' id="basic-nav-dropdown">
-								<NavDropdown.Item href="#"><AddCategory /></NavDropdown.Item>
 								<NavDropdown.Item href="#">
-									<UpdateCategory />
+									<AddCategory
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Add Category"
+										ClassForName=""
+										Icon={AiOutlinePlusSquare}
+										ClassForIcon="navbar-icon"
+									/>
 								</NavDropdown.Item>
-								<NavDropdown.Item href="#"><DeleteCategory /></NavDropdown.Item>
+								<NavDropdown.Item href="#">
+									<UpdateCategory
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Update Category"
+										ClassForName=""
+										Icon={BsFillPencilFill}
+										ClassForIcon="navbar-icon"
+									/>
+								</NavDropdown.Item>
+								<NavDropdown.Item href="#">
+									<DeleteCategory
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Delete Category"
+										ClassForName=""
+										Icon={AiFillDelete}
+										ClassForIcon="navbar-icon"
+									/>
+								</NavDropdown.Item>
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="#">
 									<Link to='/admin/category' className='text-decoration-none ms-3 text-dark'>View All</Link>
