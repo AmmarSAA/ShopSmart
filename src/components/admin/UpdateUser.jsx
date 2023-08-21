@@ -1,57 +1,97 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
-import './style.css'
+/******************************
+* File Name: UpdateUser.jsx   *
+* Author: Ammar S.A.A         *
+* Output: Update User Modal   *
+******************************/
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import axios from 'axios';
 
-function UpdateUser() {
+function UpdateUser({ setUsers, user, Variant, ClassForButton, Name, ClassForName, Icon, ClassForIcon }) {
   const [show, setShow] = useState(false);
+  const [updatedName, setUpdatedName] = useState(""); 
+  const [updatedImage, setUpdatedImage] = useState(null); 
+  const [userID, setUserID] = useState(""); 
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    if (user) {
+      setUserID(user._id); 
+    } else {
+      setUserID(null);
+    }
+    setShow(true);
+  };
+
+  const updateUser = () => {
+    if (userID && (updatedName || updatedImage)) {
+      const formData = new FormData();
+      formData.append('image', updatedImage);
+
+      // Send a PUT request to update the user details
+      axios.put(`http://localhost:5000/api/users/updateUser`, {
+        _id: userID,
+        name: updatedName,
+        ProfilePic: updatedImage ? formData : user.profilePic
+      })
+        .then((response) => {
+          console.log(response.data.message);
+          // Update the user list with the updated user details
+          setUsers(prevUsers => prevUsers.map(u => u._id === user._id ? { ...u, name: updatedName } : u));
+          setShow(false);
+        })
+        .catch((error) => {
+          console.error("Error updating user:", error.message);
+        });
+    }
+  }
 
   return (
     <>
-      <Button variant="white" onClick={handleShow}>
-        Update User
+      <Button variant={Variant} className={ClassForButton} onClick={handleShow}>
+        {Icon && <Icon className={ClassForIcon} />}
+        {Name && <span className={ClassForName}> {Name}</span>}
       </Button>
 
       <Modal show={show} onHide={handleClose} centered>
-
-        <Modal.Body className='d-flex align-items-center justify-content-center'>
-          <form className="form">
-            <p className="title">Update User </p>
-            <p className="message">Update User now and get full access to our app. </p>
-            <div className="flex">
-              <label className='w-100'>
-                <input required="" placeholder="" type="text" className="input" />
-                <span>id</span>
-              </label>
-              <label className='w-100'>
-                <input required="" placeholder="" type="text" className="input" />
-                <span>Name</span>
-              </label>
-            </div>
+        <Modal.Body className="d-flex align-items-center justify-content-center">
+          <form className="form1">
+            {/* Rest of the form */}
             <label>
-              <input required="" placeholder="" type="email" className="input" />
-              <span>Email</span>
+              <input
+                className="input1 pb-1"
+                type="text"
+                placeholder="Enter User ID to Update"
+                value={userID}
+                onChange={(e) => setUserID(e.target.value)}
+                required={true}
+              />
+              <span>User ID</span>
             </label>
             <label>
-              <input required="" placeholder="" type="password" className="input" />
-              <span>Password</span>
+              <input
+                className="input1 pb-1"
+                type="text"
+                placeholder="Enter Updated User Name"
+                value={updatedName || user?.name}
+                onChange={(e) => setUpdatedName(e.target.value)}
+                required
+              />
+              <span>User</span>
             </label>
             <label>
-              <input required="" placeholder="" type="file" className='my-3' style={{
-                backgroundColor: 'black',
-                color: '#fff'
-              }} />
-              <span className='text-success'>Choose Profile Photo</span>
+              <input
+                className="input1 pt-3 pb-1 form-control"
+                type="file"
+                placeholder=""
+                onChange={(e) => setUpdatedImage(e.target.files[0])}
+              />
+              <span>Image</span>
             </label>
-            <button className="submit">Update User</button>
+            <button className="submit1" onClick={updateUser}>Update</button>
           </form>
-
         </Modal.Body>
-
       </Modal>
     </>
   );

@@ -19,6 +19,8 @@ import AdminHome from "./pages/admin/Home";
 import Category from "./pages/admin/Category";
 import Users from "./pages/admin/Users";
 import Brand from "./pages/admin/Brand";
+import Order from "./pages/admin/Order";
+import Product from "./pages/admin/Product";
 
 export default function App() {
   const { state } = useContext(LoginContext);
@@ -50,7 +52,8 @@ export default function App() {
             <Route path="/admin/users" element={<Users />}/>
             <Route path="/admin/brand" element={<Brand />}/>
             <Route path="/admin/category" element={<Category />}/>
-            {/* <Route path="/admin/orders" element={<Orders />}/> */}
+            <Route path="/admin/order" element={<Order />}/>
+            <Route path="/admin/product" element={<Product />}/>
             <Route path="*" element={<Navigate to="/" replace={true} />} />
           </>
         ) : (
