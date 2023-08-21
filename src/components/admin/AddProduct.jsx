@@ -25,10 +25,11 @@ export default function AddProduct({
   const [show, setShow] = useState(false);
   const [ProductName, setProductName] = useState("");
   const [ProductStock, setProductStock] = useState("");
-  const [ProductPrice, setProductPrice] = useState("");
+  const [ProductRetailPrice, setProductRetailPrice] = useState("");
+  const [ProductPurchasePrice, setProductPurchasePrice] = useState("");
   const [ProductThumbnail, setProductThumbnail] = useState(null);
   const [ProductImages, setProductImages] = useState([]);
-  const [desc, setDesc] = useState("");
+  const [description, setDescription] = useState("");
   const [brandVal, setBrandVal] = useState("");
   const [categoryVal, setCategoryVal] = useState("");
   const [brands, setBrands] = useState([]);
@@ -93,9 +94,10 @@ export default function AddProduct({
       const payload = {
         productName: ProductName,
         stock: ProductStock,
-        price: ProductPrice,
+        retailPrice: ProductRetailPrice,
+        PurchasePrice: ProductPurchasePrice,
         thumbnail: ProductThumbnail,
-        description: desc,
+        description: description,
         brand: brandVal,
         category: categoryVal,
         images: imageUrls,
@@ -123,50 +125,67 @@ export default function AddProduct({
         {Name && <span className={ClassForName}> {Name}</span>}
       </Button>
 
+
       <Modal show={show} onHide={handleClose} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Add Product</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form onSubmit={handleAddProduct}>
+        <Modal.Body className="d-flex align-items-center justify-content-center">
+          <form onSubmit={handleAddProduct} className="form1">
             {isLoading && <p className="alert alert-info">Adding product...</p>}
             {error && <p className="alert alert-danger">{error}</p>}
+            <p className="title1">Product</p>
+            <p className="message1">Add New Product.</p>
             <label>
-              Product Name
               <input
+                className="input1 pb-1"
                 type="text"
+                placeholder=""
+                required={true}
                 value={ProductName}
-                className="form-control mb-3"
                 onChange={(e) => setProductName(e.target.value)}
               />
+              <span>Name</span>
             </label>
             <label>
-              Product Stock
               <input
-                type="text"
+                className="input1 pb-1"
+                type="number"
+                placeholder=""
+                required={true}
                 value={ProductStock}
-                className="form-control mb-3"
                 onChange={(e) => setProductStock(e.target.value)}
               />
+              <span>Quantity</span>
             </label>
             <label>
-              Retail Price
               <input
-                type="text"
-                value={ProductPrice}
-                className="form-control mb-3"
-                onChange={(e) => setProductPrice(e.target.value)}
+                className="input1 pb-1"
+                type="number"
+                placeholder=""
+                required={true}
+                value={ProductRetailPrice}
+                onChange={(e) => setProductRetailPrice(e.target.value)}
               />
+              <span>Retail Price</span>
+            </label>
+            <label>
+              <input
+                className="input1 pb-1"
+                type="number"
+                placeholder=""
+                required={true}
+                value={ProductPurchasePrice}
+                onChange={(e) => setProductPurchasePrice(e.target.value)}
+              />
+              <span>Purchase Price</span>
             </label>
             <Form.Group controlId="formFileThumbnail" className="mb-3">
-              <Form.Label>Product Thumbnail</Form.Label>
+              <Form.Label>Thumbnail</Form.Label>
               <Form.Control
                 type="file"
                 onChange={(e) => setProductThumbnail(e.target.files[0])}
               />
             </Form.Group>
             <Form.Group controlId="formFileImages" className="mb-3">
-              <Form.Label>Product Images</Form.Label>
+              <Form.Label>Images</Form.Label>
               <Form.Control
                 type="file"
                 multiple
@@ -207,8 +226,8 @@ export default function AddProduct({
               className="mb-3"
             >
               <Form.Control
-                value={desc}
-                onChange={(e) => setDesc(e.target.value)}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 as="textarea"
                 placeholder="Product Description"
                 style={{ height: "100px" }}

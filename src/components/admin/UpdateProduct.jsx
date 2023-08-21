@@ -4,15 +4,17 @@
 * Output: Update Products       *
 ********************************/
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 import axios from "axios";
+import { storage } from "../../utils/firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function UpdateProduct({
-  brands,
+  setProducts,
   Variant,
   ClassForButton,
   Name,
@@ -22,72 +24,101 @@ export default function UpdateProduct({
 }) {
   const [show, setShow] = useState(false);
   const [ProductName, setProductName] = useState("");
-  const [ProductPrice, setProductPrice] = useState("");
+  const [ProductStock, setProductStock] = useState("");
+  const [ProductRetailPrice, setProductRetailPrice] = useState("");
+  const [ProductPurchasePrice, setProductPurchasePrice] = useState("");
   const [ProductThumbnail, setProductThumbnail] = useState(null);
   const [ProductImages, setProductImages] = useState([]);
-  const [desc, setDesc] = useState("");
+  const [description, setDescription] = useState("");
   const [brandVal, setBrandVal] = useState("");
   const [categoryVal, setCategoryVal] = useState("");
+  const [brands, setBrands] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/brand/getBrand")
+      .then((response) => {
+        setBrands(response.data.brands);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    axios
+      .get("http://localhost:5000/api/category/getCategory")
+      .then((response) => {
+        setCategories(response.data.categories);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const storageRef = ref(storage);
 
   const handleImageUpload = (event) => {
     const selectedImages = Array.from(event.target.files);
     setProductImages(selectedImages);
   };
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setError(null); // Reset any previous errors
+  };
+
   const handleShow = () => setShow(true);
 
   const uploadImages = async () => {
-    const formData = new FormData();
-    ProductImages.forEach((image) => {
-      formData.append("images", image);
-    });
+    const imageUrls = [];
 
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/upload", // Your image upload endpoint
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      return response.data.urls;
-    } catch (error) {
-      console.error(error);
-      return [];
+    for (const image of ProductImages) {
+      const imageRef = storageRef.child(`images/${image.name}`);
+      await uploadBytes(imageRef, image);
+      const imageUrl = await getDownloadURL(imageRef);
+      imageUrls.push(imageUrl);
     }
+
+    return imageUrls;
   };
 
   const handleUpdateProduct = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const imageUrls = await uploadImages();
 
       const payload = {
+        _id: setProducts,
         productName: ProductName,
-        price: ProductPrice,
+        stock: ProductStock,
+        retailPrice: ProductRetailPrice,
+        purchasePrice: ProductPurchasePrice,
         thumbnail: ProductThumbnail,
-        description: desc,
-        brand: brandVal,
-        category: categoryVal,
+        description: description,
+        brandID: brandVal,
+        catID: categoryVal,
         images: imageUrls,
       };
 
-      const response = await axios.post(
-        "http://localhost:5000/api/product/updateProduct", // Your product update endpoint
+      const response = await axios.put(
+        "http://localhost:5000/api/product/updateProduct", // use the correct endpoint
         payload
       );
 
       console.log(response.data);
+      setIsLoading(false);
       setShow(false);
     } catch (error) {
       console.error(error);
+      setError("Error updating product.");
+      setIsLoading(false);
     }
   };
+
 
   return (
     <>
@@ -97,48 +128,112 @@ export default function UpdateProduct({
       </Button>
 
       <Modal show={show} onHide={handleClose} centered>
-        <Modal.Body>
-          <form onSubmit={handleUpdateProduct}>
+        <Modal.Body className="d-flex align-items-center justify-content-center">
+          <form onSubmit={handleUpdateProduct} className="form1">
+            {isLoading && <p className="alert alert-info">Updating product...</p>}
+            {error && <p className="alert alert-danger">{error}</p>}
+            <p className="title1">Product</p>
+            <p className="message1">Update Existing Product.</p>
             <label>
-              Product Name
               <input
+                className="input1 pb-1"
+                type="text"
+                placeholder=""
+                required={true}
                 value={ProductName}
                 onChange={(e) => setProductName(e.target.value)}
-                type="text"
-                className="form-control"
               />
+              <span>Name</span>
             </label>
-
             <label>
-              Product Price
               <input
-                value={ProductPrice}
-                onChange={(e) => setProductPrice(e.target.value)}
-                type="text"
-                className="form-control"
+                className="input1 pb-1"
+                type="number"
+                placeholder=""
+                required={true}
+                value={ProductStock}
+                onChange={(e) => setProductStock(e.target.value)}
               />
+              <span>Quantity</span>
             </label>
-
+            <label>
+              <input
+                className="input1 pb-1"
+                type="number"
+                placeholder=""
+                required={true}
+                value={ProductRetailPrice}
+                onChange={(e) => setProductRetailPrice(e.target.value)}
+              />
+              <span>Retail Price</span>
+            </label>
+            <label>
+              <input
+                className="input1 pb-1"
+                type="number"
+                placeholder=""
+                required={true}
+                value={ProductPurchasePrice}
+                onChange={(e) => setProductPurchasePrice(e.target.value)}
+              />
+              <span>Purchase Price</span>
+            </label>
             <Form.Group controlId="formFileThumbnail" className="mb-3">
-              <Form.Label>Product Thumbnail</Form.Label>
+              <Form.Label>Thumbnail</Form.Label>
               <Form.Control
                 type="file"
                 onChange={(e) => setProductThumbnail(e.target.files[0])}
               />
             </Form.Group>
-
             <Form.Group controlId="formFileImages" className="mb-3">
-              <Form.Label>Product Images</Form.Label>
+              <Form.Label>Images</Form.Label>
               <Form.Control
                 type="file"
                 multiple
                 onChange={handleImageUpload}
               />
             </Form.Group>
-
-            {/* Other form fields */}
-            {/* ... */}
-
+            <Form.Group className="mb-3">
+              <Form.Label>Brand</Form.Label>
+              <Form.Select
+                aria-label="Please Select a Brand"
+                onChange={(e) => setBrandVal(e.target.value)}
+              >
+                <option>Please Select a Brand</option>
+                {brands.map((brand) => (
+                  <option key={brand._id} value={brand._id}>
+                    {brand.name}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Category</Form.Label>
+              <Form.Select
+                aria-label="Please Select a Category"
+                onChange={(e) => setCategoryVal(e.target.value)}
+              >
+                <option>Please Select a Category</option>
+                {categories.map((category) => (
+                  <option key={category._id} value={category._id}>
+                    {category.name}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+            <FloatingLabel
+              controlId="floatingTextarea2"
+              label="Description"
+              className="mb-3"
+            >
+              <Form.Control
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                as="textarea"
+                placeholder="Product Description"
+                style={{ height: "100px" }}
+              />
+            </FloatingLabel>
             <button type="submit" className="btn btn-primary">
               Update Product
             </button>
