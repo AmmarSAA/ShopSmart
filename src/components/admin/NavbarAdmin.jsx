@@ -7,21 +7,24 @@ import './style.css'
 import AddUser from './AddUser'
 import AddCategory from './AddCategory';
 import AddBrand from './AddBrand';
-import UpdateUser from './UpdateUser';
-import UpdateBrand from './UpdateBrand';
-import UpdateCategory from './UpdateCategory';
-import DeleteCategory from './DeleteCategory';
-import DeleteBrand from './DeleteBrand';
-import DeleteUser from './DeleteUser';
+import AddProduct from './AddProduct';
+import DeleteProduct from './DeleteProduct';
+import UpdateProduct from './UpdateProduct';
+// import UpdateUser from './UpdateUser';
+// import UpdateBrand from './UpdateBrand';
+// import UpdateCategory from './UpdateCategory';
+// import DeleteCategory from './DeleteCategory';
+// import DeleteBrand from './DeleteBrand';
+// import DeleteUser from './DeleteUser';
+import { BsFillPencilFill } from 'react-icons/bs';
+import { AiFillDelete } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import './app';
 import './style.css'
 import { PiSignOut } from "react-icons/pi";
 import ProfileForm from "../../components/ProfileForm";
 import { ButtonGroup } from "react-bootstrap";
-import { AiFillDelete } from "react-icons/ai";
 import React, { useState } from 'react';
-import { BsFillPencilFill } from 'react-icons/bs';
 import { AiOutlinePlusSquare } from "react-icons/ai";
 
 function NavbarAdmin() {
@@ -42,7 +45,7 @@ function NavbarAdmin() {
 								</Link>
 							</Nav.Link>
 							<NavDropdown title="User" id="collapsible-nav-dropdown" className="d-flex">
-							<NavDropdown.Item href="#">
+								<NavDropdown.Item href="#">
 									<AddUser
 										Variant="white"
 										ClassForButton="btn align-items-center"
@@ -160,15 +163,36 @@ function NavbarAdmin() {
 							</NavDropdown> */}
 							<NavDropdown title="Product" id="basic-nav-dropdown">
 								<NavDropdown.Item href="#">
-									Add Product
-									</NavDropdown.Item>
-								{/* <NavDropdown.Item href="#">
-									Update Product
+									<AddProduct
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Add Product"
+										ClassForName=""
+										Icon={AiOutlinePlusSquare}
+										ClassForIcon="navbar-icon"
+									/>
 								</NavDropdown.Item>
 								<NavDropdown.Item href="#">
-									Delete Product
-									</NavDropdown.Item>
-								<NavDropdown.Divider /> */}
+									<UpdateProduct
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Update Product"
+										ClassForName=""
+										Icon={BsFillPencilFill}
+										ClassForIcon="navbar-icon"
+									/>
+								</NavDropdown.Item>
+								<NavDropdown.Item href="#">
+									<DeleteProduct
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Delete Product"
+										ClassForName=""
+										Icon={AiFillDelete}
+										ClassForIcon="navbar-icon"
+									/>
+								</NavDropdown.Item>
+								<NavDropdown.Divider />
 								<NavDropdown.Item href="/admin/product" className="text-decoration-none mx-2 nav-color">
 									View All
 								</NavDropdown.Item>
