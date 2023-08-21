@@ -42,9 +42,36 @@ function NavbarAdmin() {
 								</Link>
 							</Nav.Link>
 							<NavDropdown title="User" id="collapsible-nav-dropdown" className="d-flex">
-								<NavDropdown.Item href="#"><AddUser /></NavDropdown.Item>
-								<NavDropdown.Item href="#"><UpdateUser /></NavDropdown.Item>
-								<NavDropdown.Item href="#"><DeleteUser /></NavDropdown.Item>
+							<NavDropdown.Item href="#">
+									<AddUser
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Add User"
+										ClassForName=""
+										Icon={AiOutlinePlusSquare}
+										ClassForIcon="navbar-icon"
+									/>
+								</NavDropdown.Item>
+								{/* <NavDropdown.Item href="#">
+									<UpdateUser
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Update User"
+										ClassForName=""
+										Icon={BsFillPencilFill}
+										ClassForIcon="navbar-icon"
+									/>
+									</NavDropdown.Item>
+								<NavDropdown.Item href="#">
+								<DeleteUser
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Delete User"
+										ClassForName=""
+										Icon={AiFillDelete}
+										ClassForIcon="navbar-icon"
+									/>
+									</NavDropdown.Item> */}
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="/admin/users">View All</NavDropdown.Item>
 							</NavDropdown>
@@ -59,7 +86,7 @@ function NavbarAdmin() {
 										ClassForIcon="navbar-icon"
 									/>
 								</NavDropdown.Item>
-								<NavDropdown.Item href="#">
+								{/* <NavDropdown.Item href="#">
 									<UpdateBrand
 										Variant="white"
 										ClassForButton="btn align-items-center"
@@ -78,7 +105,7 @@ function NavbarAdmin() {
 										Icon={AiFillDelete}
 										ClassForIcon="navbar-icon"
 									/>
-								</NavDropdown.Item>
+								</NavDropdown.Item> */}
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="/admin/brand">
 									View All
@@ -95,7 +122,7 @@ function NavbarAdmin() {
 										ClassForIcon="navbar-icon"
 									/>
 								</NavDropdown.Item>
-								<NavDropdown.Item href="#">
+								{/* <NavDropdown.Item href="#">
 									<UpdateCategory
 										Variant="white"
 										ClassForButton="btn align-items-center"
@@ -114,20 +141,35 @@ function NavbarAdmin() {
 										Icon={AiFillDelete}
 										ClassForIcon="navbar-icon"
 									/>
-								</NavDropdown.Item>
+								</NavDropdown.Item> */}
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="#">
 									<Link to='/admin/category' className='text-decoration-none ms-3 text-dark'>View All</Link>
 								</NavDropdown.Item>
 							</NavDropdown>
-							<NavDropdown title="Order" id="basic-nav-dropdown">
+							{/* <NavDropdown title="Order" id="basic-nav-dropdown">
 								<NavDropdown.Item href="#">Add Order</NavDropdown.Item>
 								<NavDropdown.Item href="#">
 									Update Order
 								</NavDropdown.Item>
 								<NavDropdown.Item href="#">Delete Order</NavDropdown.Item>
 								<NavDropdown.Divider />
-								<NavDropdown.Item href="/admin/orders" className="text-decoration-none mx-2 nav-color">
+								<NavDropdown.Item href="/admin/order" className="text-decoration-none mx-2 nav-color">
+									View All
+								</NavDropdown.Item>
+							</NavDropdown> */}
+							<NavDropdown title="Product" id="basic-nav-dropdown">
+								<NavDropdown.Item href="#">
+									Add Product
+									</NavDropdown.Item>
+								{/* <NavDropdown.Item href="#">
+									Update Product
+								</NavDropdown.Item>
+								<NavDropdown.Item href="#">
+									Delete Product
+									</NavDropdown.Item>
+								<NavDropdown.Divider /> */}
+								<NavDropdown.Item href="/admin/product" className="text-decoration-none mx-2 nav-color">
 									View All
 								</NavDropdown.Item>
 							</NavDropdown>
