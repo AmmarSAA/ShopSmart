@@ -105,7 +105,7 @@ export default function UpdateProduct({
       };
 
       const response = await axios.put(
-        "http://localhost:5000/api/product/updateProduct", // use the correct endpoint
+        "http://localhost:5000/api/product/updateProduct",
         payload
       );
 

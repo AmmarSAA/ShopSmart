@@ -5,12 +5,12 @@
 ********************************/
 
 import React from 'react'
-import ShowBrands from '../../components/admin/ShowCategory'
 import { Form } from 'react-bootstrap'
 import { Row } from 'react-bootstrap'
 import { Col } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import { FaSearch } from 'react-icons/fa'
+import ShowOrders from '../../components/admin/ShowOrders'
 
 export default function Order() {
   return (
@@ -37,7 +37,7 @@ export default function Order() {
             </Form>
           </div>
         </div>
-        <ShowBrands />
+        <ShowOrders />
       </div>
     </div>
   )
