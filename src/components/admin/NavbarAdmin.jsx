@@ -26,7 +26,7 @@ import ProfileForm from "../../components/ProfileForm";
 import { ButtonGroup } from "react-bootstrap";
 import React, { useState } from 'react';
 import { AiOutlinePlusSquare } from "react-icons/ai";
-import AddOrder from './AddOeder';
+import AddOrder from './AddOrder';
 import UpdateOrder from './UpdateOrder';
 import DeleteOrder from './DeleteOrder';
 
