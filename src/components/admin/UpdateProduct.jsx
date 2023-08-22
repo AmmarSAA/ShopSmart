@@ -12,6 +12,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import axios from "axios";
 import { storage } from "../../utils/firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { SERVER } from "../../App";
 
 export default function UpdateProduct({
   setProducts,
@@ -39,7 +40,7 @@ export default function UpdateProduct({
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/brand/getBrand")
+      .get(`${SERVER}api/brand/getBrand`)
       .then((response) => {
         setBrands(response.data.brands);
       })
@@ -48,7 +49,7 @@ export default function UpdateProduct({
       });
 
     axios
-      .get("http://localhost:5000/api/category/getCategory")
+      .get(`${SERVER}api/category/getCategory`)
       .then((response) => {
         setCategories(response.data.categories);
       })
@@ -105,7 +106,7 @@ export default function UpdateProduct({
       };
 
       const response = await axios.put(
-        "http://localhost:5000/api/product/updateProduct",
+        `${SERVER}api/product/updateProduct`,
         payload
       );
 

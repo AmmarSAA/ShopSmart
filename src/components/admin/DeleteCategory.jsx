@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './style.css';
 import axios from 'axios';
+import { SERVER } from '../../App';
 
 export default function DeleteCategory({ setCategories, categoryID, initialCategoryName, Variant, ClassForButton, Name, ClassForName, Icon, ClassForIcon }) {
   const [show, setShow] = useState(false);
@@ -21,7 +22,7 @@ export default function DeleteCategory({ setCategories, categoryID, initialCateg
   const handleShow = () => setShow(true);
 
   const deleteCategory = () => {
-    axios.delete(`http://localhost:5000/api/category/deleteCategory`, {
+    axios.delete(`${SERVER}api/category/deleteCategory`, {
       data: { Name: categoryName } // Sending the _id to delete the category
     })
       .then((response) => {

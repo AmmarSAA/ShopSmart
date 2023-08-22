@@ -11,6 +11,7 @@ import axios from "axios";
 import { storage } from "../../utils/firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import UpdateCategory from "./UpdateCategory";
+import { SERVER } from "../../App";
 
 function AddCategory({ Variant, ClassForButton, Name, ClassForName, Icon, ClassForIcon }) {
   const [show, setShow] = useState(false);
@@ -40,7 +41,7 @@ function AddCategory({ Variant, ClassForButton, Name, ClassForName, Icon, ClassF
             formData.append("Image", url);
             axios
               .post(
-                `http://localhost:5000/api/category/createCategory`,
+                `${SERVER}api/category/createCategory`,
                 formData
               )
               .then((json) => {

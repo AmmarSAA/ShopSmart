@@ -20,7 +20,7 @@ function DeleteOrder({ Variant, ClassForButton, Name, ClassForName, Icon, ClassF
     }
 
     axios
-      .delete("http://localhost:5001/api/order/delete-order", {
+      .delete("http://localhost:5001api/order/delete-order", {
         data: { _id: orderId } // Sending the _id to delete the order
       })
       .then((response) => {

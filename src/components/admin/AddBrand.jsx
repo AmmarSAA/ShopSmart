@@ -11,6 +11,7 @@ import axios from "axios";
 import { storage } from "../../utils/firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import UpdateBrand from "./UpdateBrand";
+import { SERVER } from "../../App";
 
 function AddBrand({ Variant, ClassForButton, Name, ClassForName, Icon, ClassForIcon }) {
   const [show, setShow] = useState(false);
@@ -40,7 +41,7 @@ function AddBrand({ Variant, ClassForButton, Name, ClassForName, Icon, ClassForI
             formData.append("Image", url);
             axios
               .post(
-                `http://localhost:5000/api/brand/createBrand`,
+                `${SERVER}api/brand/createBrand`,
                 formData
               )
               .then((json) => {

@@ -8,6 +8,7 @@ import React, { useContext, useState } from 'react';
 import { LoginContext } from '../Context/Login-Context/login-context';
 import axios from 'axios';
 import SignIn from "./SignIn";
+import { SERVER } from '../App';
 
 const Signup = () => {
   const { dispatch } = useContext(LoginContext);
@@ -30,7 +31,7 @@ const Signup = () => {
     try {
       setIsLoading(true);
       // Make a POST request to the backend for user signup
-      const response = await axios.post("http://localhost:5000/api/users/signup", {
+      const response = await axios.post(`${SERVER}api/users/signup`, {
         name: username,
         email: email,
         password: password,

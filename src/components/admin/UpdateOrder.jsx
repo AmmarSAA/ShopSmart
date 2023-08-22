@@ -47,7 +47,7 @@ function UpdateOrder({ Variant, ClassForButton, Name, ClassForName, Icon, ClassF
     };
 
     axios
-      .put("http://localhost:5001/api/order/update-order", orderData)
+      .put("http://localhost:5001api/order/update-order", orderData)
       .then((response) => {
         setMessage(response.data.message);
       })

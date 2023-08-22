@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './style.css';
 import axios from 'axios';
+import { SERVER } from '../../App';
 
 export default function DeleteBrand({ setBrands, brandID, initialBrandName, Variant, ClassForButton, Name, ClassForName, Icon, ClassForIcon }) {
   const [show, setShow] = useState(false);
@@ -21,7 +22,7 @@ export default function DeleteBrand({ setBrands, brandID, initialBrandName, Vari
   const handleShow = () => setShow(true);
 
   const deleteBrand = () => {
-    axios.delete(`http://localhost:5000/api/brand/deleteBrand`, {
+    axios.delete(`${SERVER}api/brand/deleteBrand`, {
       data: { Name: brandName } // Sending the _id to delete the brand
     })
       .then((response) => {

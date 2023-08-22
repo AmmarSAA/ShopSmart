@@ -7,6 +7,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from 'axios';
+import { SERVER } from "../../App";
 
 function UpdateUser({ setUsers, user, Variant, ClassForButton, Name, ClassForName, Icon, ClassForIcon }) {
   const [show, setShow] = useState(false);
@@ -30,7 +31,7 @@ function UpdateUser({ setUsers, user, Variant, ClassForButton, Name, ClassForNam
       formData.append('image', updatedImage);
 
       // Send a PUT request to update the user details
-      axios.put(`http://localhost:5000/api/users/updateUser`, {
+      axios.put(`${SERVER}api/users/updateUser`, {
         _id: userID,
         name: updatedName,
         ProfilePic: updatedImage ? formData : user.profilePic

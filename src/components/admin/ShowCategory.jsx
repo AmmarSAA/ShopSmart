@@ -12,13 +12,14 @@ import UpdateCategory from './UpdateCategory';
 import './style.css'; // Import a CSS file for custom styles
 import { AiFillDelete } from 'react-icons/ai';
 import { BsFillPencilFill } from "react-icons/bs";
+import { SERVER } from '../../App';
 
 function ShowCategories() {
 
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/category/getCategory')
+    axios.get(`${SERVER}api/category/getCategory`)
       .then((json) => setCategories(json.data.categories))
       .catch((err) => console.log(err))
   }, [])

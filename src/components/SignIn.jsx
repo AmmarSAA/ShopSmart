@@ -9,6 +9,7 @@ import '../App.css';
 import { LoginContext } from '../Context/Login-Context/login-context';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { SERVER } from "../App";
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -34,7 +35,7 @@ const SignIn = () => {
     const payload = { email, password };
     // Send the email and password to the server for signin
     axios
-      .post("http://localhost:5000/api/users/signin", payload)
+      .post(`${SERVER}api/users/signin`, payload)
       .then((response) => {
         Cookies.set('token', response.data.token);
         dispatch({

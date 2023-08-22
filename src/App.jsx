@@ -22,6 +22,8 @@ import Brand from "./pages/admin/Brand";
 import Order from "./pages/admin/Order";
 import Product from "./pages/admin/Product";
 
+export const SERVER = "/";
+
 export default function App() {
   const { state } = useContext(LoginContext);
 

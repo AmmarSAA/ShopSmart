@@ -45,7 +45,7 @@ function AddOrder({ Variant, ClassForButton, Name, ClassForName, Icon, ClassForI
     };
 
     axios
-      .post("http://localhost:5001/api/order/createOrder", orderData)
+      .post("http://localhost:5001api/order/createOrder", orderData)
       .then((response) => {
         setMessage(response.data.message);
       })

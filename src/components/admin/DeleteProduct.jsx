@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './style.css';
 import axios from 'axios';
+import { SERVER } from '../../App';
 
 export default function DeleteProduct({ setProducts, productID, initialProductName, Variant, ClassForButton, Name, ClassForName, Icon, ClassForIcon }) {
   const [show, setShow] = useState(false);
@@ -21,7 +22,7 @@ export default function DeleteProduct({ setProducts, productID, initialProductNa
   const handleShow = () => setShow(true);
 
   const deleteProduct = () => {
-    axios.delete(`http://localhost:5000/api/product/deleteProduct`, {
+    axios.delete(`${SERVER}api/product/deleteProduct`, {
       data: { Name: productName } // Sending the _id to delete the product
     })
       .then((response) => {

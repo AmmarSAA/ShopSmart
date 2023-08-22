@@ -12,13 +12,14 @@ import UpdateProduct from './UpdateProduct';
 import './style.css';
 import { AiFillDelete } from 'react-icons/ai';
 import { BsFillPencilFill } from "react-icons/bs";
+import { SERVER } from '../../App';
 
 function ShowProducts() {
 
   const [orders, setProducts] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/product/getProduct')
+    axios.get(`${SERVER}api/product/getProduct`)
       .then((json) => setProducts(json.data.orders))
       .catch((err) => console.log(err))
   }, [])

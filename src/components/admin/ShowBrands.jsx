@@ -12,13 +12,14 @@ import UpdateBrand from './UpdateBrand';
 import './style.css'; // Import a CSS file for custom styles
 import { AiFillDelete } from 'react-icons/ai';
 import { BsFillPencilFill } from "react-icons/bs";
+import { SERVER } from '../../App';
 
 function ShowBrands() {
 
   const [brands, setBrands] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/brand/getBrand')
+    axios.get(`${SERVER}api/brand/getBrand`)
       .then((json) => setBrands(json.data.brands))
       .catch((err) => console.log(err))
   }, [])

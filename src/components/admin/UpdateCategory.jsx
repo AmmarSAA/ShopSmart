@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./style.css";
 import axios from 'axios';
+import { SERVER } from "../../App";
 
 function UpdateCategory({ setCategories, category, Variant, ClassForButton, Name, ClassForName, Icon, ClassForIcon }) {
   const [show, setShow] = useState(false);
@@ -31,7 +32,7 @@ function UpdateCategory({ setCategories, category, Variant, ClassForButton, Name
       const formData = new FormData();
       formData.append('image', updatedImage);
 
-      axios.put(`http://localhost:5000/api/category/updateCategory`, {
+      axios.put(`${SERVER}api/category/updateCategory`, {
         _id: categoryID,
         Name: updatedName,
         Image: updatedImage ? formData : category.image

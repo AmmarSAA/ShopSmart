@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
+import { SERVER } from '../../App';
 
 export default function DeleteUser({ setUsers, userID, initialUserEmail, Variant, ClassForButton, Name, ClassForName, Icon, ClassForIcon }) {
   const [show, setShow] = useState(false);
@@ -21,7 +22,7 @@ export default function DeleteUser({ setUsers, userID, initialUserEmail, Variant
   const handleShow = () => setShow(true);
 
   const deleteUser = () => {
-    axios.delete(`http://localhost:5000/api/users/deleteUser`, {
+    axios.delete(`${SERVER}api/users/deleteUser`, {
       data: { _id: userID } 
     })
       .then((response) => {

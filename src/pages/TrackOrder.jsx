@@ -11,6 +11,7 @@ import axios from "axios";
 import { storage } from "../../utils/firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import UpdateUser from "./UpdateUser"; // Replace with the correct path
+import { SERVER } from "../App";
 
 export default function TrackOrder({ Variant, ClassForButton, Name, ClassForName, Icon, ClassForIcon }) {
   const [show, setShow] = useState(false);
@@ -42,7 +43,7 @@ export default function TrackOrder({ Variant, ClassForButton, Name, ClassForName
             formData.append("Image", url);
             axios
               .post(
-                `http://localhost:5000/api/user/createUser`,
+                `${SERVER}api/user/createUser`,
                 formData
               )
               .then((json) => {

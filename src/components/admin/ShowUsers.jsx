@@ -12,13 +12,14 @@ import UpdateUser from './UpdateUser';
 import './style.css';
 import { AiFillDelete } from 'react-icons/ai';
 import { BsFillPencilFill } from "react-icons/bs";
+import { SERVER } from '../../App';
 
 function ShowUsers() {
 
   const [users, setUsers] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/users/getUsers')
+    axios.get(`${SERVER}api/users/getUsers`)
       .then((json) => setUsers(json.data.users))
       .catch((err) => console.log(err))
   }, [])
