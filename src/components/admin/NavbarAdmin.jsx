@@ -26,6 +26,9 @@ import ProfileForm from "../../components/ProfileForm";
 import { ButtonGroup } from "react-bootstrap";
 import React, { useState } from 'react';
 import { AiOutlinePlusSquare } from "react-icons/ai";
+import AddOrder from './AddOeder';
+import UpdateOrder from './UpdateOrder';
+import DeleteOrder from './DeleteOrder';
 
 function NavbarAdmin() {
 	const logOutUser = () => {
@@ -150,17 +153,38 @@ function NavbarAdmin() {
 									<Link to='/admin/category' className='text-decoration-none ms-3 text-dark'>View All</Link>
 								</NavDropdown.Item>
 							</NavDropdown>
-							{/* <NavDropdown title="Order" id="basic-nav-dropdown">
-								<NavDropdown.Item href="#">Add Order</NavDropdown.Item>
+							<NavDropdown title="Order" id="basic-nav-dropdown">
+								<NavDropdown.Item href="#"><AddOrder
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Add Order"
+										ClassForName=""
+										Icon={AiOutlinePlusSquare}
+										ClassForIcon="navbar-icon"
+									/></NavDropdown.Item>
 								<NavDropdown.Item href="#">
-									Update Order
+								<UpdateOrder
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Update Order"
+										ClassForName=""
+										Icon={BsFillPencilFill}
+										ClassForIcon="navbar-icon"
+									/>
 								</NavDropdown.Item>
-								<NavDropdown.Item href="#">Delete Order</NavDropdown.Item>
+								<NavDropdown.Item href="#"><DeleteOrder
+										Variant="white"
+										ClassForButton="btn align-items-center"
+										Name=" Delete Order"
+										ClassForName=""
+										Icon={AiFillDelete}
+										ClassForIcon="navbar-icon"
+									/></NavDropdown.Item>
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="/admin/order" className="text-decoration-none mx-2 nav-color">
 									View All
 								</NavDropdown.Item>
-							</NavDropdown> */}
+							</NavDropdown>
 							<NavDropdown title="Product" id="basic-nav-dropdown">
 								<NavDropdown.Item href="#">
 									<AddProduct

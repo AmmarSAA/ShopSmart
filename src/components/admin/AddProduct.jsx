@@ -180,7 +180,7 @@ export default function AddProduct({
                 onChange={(e) => setBrandVal(e.target.value)}
               >
                 <option>Please Select a Brand</option>
-                {brands.map((brand) => (
+                {brands?.map((brand) => (
                   <option key={brand._id} value={brand._id}>
                     {brand.name}
                   </option>
@@ -194,7 +194,7 @@ export default function AddProduct({
                 onChange={(e) => setCategoryVal(e.target.value)}
               >
                 <option>Please Select a Category</option>
-                {categories.map((category) => (
+                {categories?.map((category) => (
                   <option key={category._id} value={category._id}>
                     {category.name}
                   </option>
