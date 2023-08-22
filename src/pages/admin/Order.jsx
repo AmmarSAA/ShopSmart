@@ -18,7 +18,7 @@ export default function Order() {
       <div className="justify-content-between align-items-center">
         <div className="row">
           <div className="col-8">
-            <div className="h4 p-3">All Categories</div>
+            <div className="h4 p-3">All Orders</div>
           </div>
           <div className="col-4">
             <Form inline="true">
