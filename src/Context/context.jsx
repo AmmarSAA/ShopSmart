@@ -1,8 +1,12 @@
-/*********************
- * Author: Ameen Hamza
- * File: ContextProvider.js
- * Description: This file defines the ContextProvider component that manages the global state using the React Context API and stores cart data in cookies.
- ********************/
+/**************************************
+ * Author: Ameen Hamza                *
+ * File: context.jsx                  *
+ * Description: This file defines     *
+ * the ContextProvider component      *
+ * that manages the global state      *
+ * using the React Context API        *
+ * and stores cart data in cookies.   *
+ *************************************/
 
 import React, { useReducer, createContext, useEffect } from "react";
 import { reducer } from "./reducer";
