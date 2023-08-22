@@ -162,8 +162,8 @@ function NavbarAdmin() {
 										Icon={AiOutlinePlusSquare}
 										ClassForIcon="navbar-icon"
 									/></NavDropdown.Item>
-								<NavDropdown.Item href="#">
-								<UpdateOrder
+								{/* <NavDropdown.Item href="#">
+									<UpdateOrder
 										Variant="white"
 										ClassForButton="btn align-items-center"
 										Name=" Update Order"
@@ -179,7 +179,8 @@ function NavbarAdmin() {
 										ClassForName=""
 										Icon={AiFillDelete}
 										ClassForIcon="navbar-icon"
-									/></NavDropdown.Item>
+									/>
+								</NavDropdown.Item> */}
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="/admin/order" className="text-decoration-none mx-2 nav-color">
 									View All
@@ -196,7 +197,7 @@ function NavbarAdmin() {
 										ClassForIcon="navbar-icon"
 									/>
 								</NavDropdown.Item>
-								<NavDropdown.Item href="#">
+								{/* <NavDropdown.Item href="#">
 									<UpdateProduct
 										Variant="white"
 										ClassForButton="btn align-items-center"
@@ -215,7 +216,7 @@ function NavbarAdmin() {
 										Icon={AiFillDelete}
 										ClassForIcon="navbar-icon"
 									/>
-								</NavDropdown.Item>
+								</NavDropdown.Item> */}
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="/admin/product" className="text-decoration-none mx-2 nav-color">
 									View All
