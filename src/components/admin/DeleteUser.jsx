@@ -21,7 +21,7 @@ export default function DeleteUser({ setUsers, userID, initialUserEmail, Variant
   const handleShow = () => setShow(true);
 
   const deleteUser = () => {
-    axios.delete(`http://localhost:5000/api/users/deleteUser`, {
+    axios.delete(`http://localhost:5001/api/users/deleteUser`, {
       data: { _id: userID } 
     })
       .then((response) => {

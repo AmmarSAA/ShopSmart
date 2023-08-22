@@ -21,7 +21,7 @@ export default function DeleteProduct({ setProducts, productID, initialProductNa
   const handleShow = () => setShow(true);
 
   const deleteProduct = () => {
-    axios.delete(`http://localhost:5000/api/product/deleteProduct`, {
+    axios.delete(`http://localhost:5001/api/product/deleteProduct`, {
       data: { Name: productName } // Sending the _id to delete the product
     })
       .then((response) => {

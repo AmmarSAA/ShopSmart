@@ -21,7 +21,7 @@ export default function DeleteCategory({ setCategories, categoryID, initialCateg
   const handleShow = () => setShow(true);
 
   const deleteCategory = () => {
-    axios.delete(`http://localhost:5000/api/category/deleteCategory`, {
+    axios.delete(`http://localhost:5001/api/category/deleteCategory`, {
       data: { Name: categoryName } // Sending the _id to delete the category
     })
       .then((response) => {

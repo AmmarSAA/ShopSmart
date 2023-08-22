@@ -18,7 +18,7 @@ function ShowOrders() {
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/order/getOrder')
+    axios.get('http://localhost:5001/api/order/getOrder')
       .then((json) => setOrders(json.data.orders))
       .catch((err) => console.log(err))
   }, [])

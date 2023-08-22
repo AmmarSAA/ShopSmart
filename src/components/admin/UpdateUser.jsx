@@ -30,7 +30,7 @@ function UpdateUser({ setUsers, user, Variant, ClassForButton, Name, ClassForNam
       formData.append('image', updatedImage);
 
       // Send a PUT request to update the user details
-      axios.put(`http://localhost:5000/api/users/updateUser`, {
+      axios.put(`http://localhost:5001/api/users/updateUser`, {
         _id: userID,
         name: updatedName,
         ProfilePic: updatedImage ? formData : user.profilePic

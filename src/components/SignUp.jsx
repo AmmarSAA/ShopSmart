@@ -30,7 +30,7 @@ const Signup = () => {
     try {
       setIsLoading(true);
       // Make a POST request to the backend for user signup
-      const response = await axios.post("http://localhost:5000/api/users/signup", {
+      const response = await axios.post("http://localhost:5001/api/users/signup", {
         name: username,
         email: email,
         password: password,

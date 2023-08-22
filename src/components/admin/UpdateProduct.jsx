@@ -45,7 +45,7 @@ export default function UpdateProduct({
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/upload", // Your image upload endpoint
+        "http://localhost:5001/api/upload", // Your image upload endpoint
         formData,
         {
           headers: {
@@ -78,7 +78,7 @@ export default function UpdateProduct({
       };
 
       const response = await axios.post(
-        "http://localhost:5000/api/product/updateProduct", // Your product update endpoint
+        "http://localhost:5001/api/product/updateProduct", // Your product update endpoint
         payload
       );
 

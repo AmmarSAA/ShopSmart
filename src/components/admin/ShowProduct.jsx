@@ -18,7 +18,7 @@ function ShowProducts() {
   const [orders, setProducts] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/product/getProduct')
+    axios.get('http://localhost:5001/api/product/getProduct')
       .then((json) => setProducts(json.data.orders))
       .catch((err) => console.log(err))
   }, [])

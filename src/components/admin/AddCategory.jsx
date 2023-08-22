@@ -40,7 +40,7 @@ function AddCategory({ Variant, ClassForButton, Name, ClassForName, Icon, ClassF
             formData.append("Image", url);
             axios
               .post(
-                `http://localhost:5000/api/category/createCategory`,
+                `http://localhost:5001/api/category/createCategory`,
                 formData
               )
               .then((json) => {

@@ -3,7 +3,7 @@ import '../App.css';
 
 function CrouselItem() {
   return (
-    <Carousel interval={5000} fade={true}>
+    <Carousel interval={5001} fade={true}>
       <Carousel.Item>
         <img
           className="d-block w-100 cr-img"

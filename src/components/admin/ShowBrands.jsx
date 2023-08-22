@@ -18,7 +18,7 @@ function ShowBrands() {
   const [brands, setBrands] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/brand/getBrand')
+    axios.get('http://localhost:5001/api/brand/getBrand')
       .then((json) => setBrands(json.data.brands))
       .catch((err) => console.log(err))
   }, [])

@@ -38,7 +38,7 @@ export default function AddProduct({
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/brand/getBrand")
+      .get("http://localhost:5001/api/brand/getBrand")
       .then((response) => {
         setBrands(response.data.brands);
       })
@@ -47,7 +47,7 @@ export default function AddProduct({
       });
 
     axios
-      .get("http://localhost:5000/api/category/getCategory")
+      .get("http://localhost:5001/api/category/getCategory")
       .then((response) => {
         setCategories(response.data.categories);
       })
@@ -102,7 +102,7 @@ export default function AddProduct({
       };
 
       const response = await axios.post(
-        "http://localhost:5000/api/product/createProduct",
+        "http://localhost:5001/api/product/createProduct",
         payload
       );
 

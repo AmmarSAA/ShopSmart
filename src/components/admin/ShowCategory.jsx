@@ -18,7 +18,7 @@ function ShowCategories() {
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/category/getCategory')
+    axios.get('http://localhost:5001/api/category/getCategory')
       .then((json) => setCategories(json.data.categories))
       .catch((err) => console.log(err))
   }, [])

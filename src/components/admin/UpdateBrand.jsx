@@ -31,7 +31,7 @@ function UpdateBrand({ setBrands, brand, Variant, ClassForButton, Name, ClassFor
       const formData = new FormData();
       formData.append('image', updatedImage);
 
-      axios.put(`http://localhost:5000/api/brand/updateBrand`, {
+      axios.put(`http://localhost:5001/api/brand/updateBrand`, {
         _id: brandID,
         Name: updatedName,
         Image: updatedImage ? formData : brand.image

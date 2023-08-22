@@ -21,7 +21,7 @@ export default function DeleteBrand({ setBrands, brandID, initialBrandName, Vari
   const handleShow = () => setShow(true);
 
   const deleteBrand = () => {
-    axios.delete(`http://localhost:5000/api/brand/deleteBrand`, {
+    axios.delete(`http://localhost:5001/api/brand/deleteBrand`, {
       data: { Name: brandName } // Sending the _id to delete the brand
     })
       .then((response) => {
