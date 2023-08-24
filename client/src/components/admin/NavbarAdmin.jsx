@@ -1,3 +1,5 @@
+
+import React, { useContext, useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -26,11 +28,15 @@ import './style.css'
 import { PiSignOut } from "react-icons/pi";
 import ProfileForm from "../../components/ProfileForm";
 import { ButtonGroup } from "react-bootstrap";
-import React, { useState } from 'react';
 import { AiOutlinePlusSquare } from "react-icons/ai";
 import AddOrder from './AddOrder';
+import { GlobalContext } from '../../Context/context';
+import { LoginContext } from '../../Context/Login-Context/login-context';
 
 function NavbarAdmin() {
+	const { state: loginState, dispatch: loginDispatch } = useContext(LoginContext);
+	const { state: globalState, dispatch: globalDispatch } = useContext(GlobalContext);
+
 	const logOutUser = () => {
 		loginDispatch({ type: "LOGOUT_USER" });
 	}
