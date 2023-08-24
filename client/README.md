@@ -4,13 +4,16 @@ Discover Your Style, Shop with Ease
 
 ## Table of Contents
 
-- [About](#about)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
+- [ShopSmart](#shopsmart)
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Technologies Used](#technologies-used)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Additional Information](#additional-information)
 
 ## About
 
@@ -76,4 +79,4 @@ ShopSmart is licensed under the [MIT License](LICENSE).
 
 ## Additional Information
 
-For additional information, contact us at shopsmart@example.com or visit our website [https://shopsmartbyrefiners.vercel.app](https://www.shopsmartbyrefiners.vercel.app).
+For additional information, contact us at s.ammarahmed14@gmail.com or visit our website [https://shopsmart.cyclic.cloud](https://www.shopsmart.com).
