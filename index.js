@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
 const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
@@ -13,7 +13,7 @@ app.use('/', express.static(clientPath));
 const port = process.env.SERVER_PORT || 3000;
 
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 
 // Define routes using the appropriate route handlers
 app.use('/api/users', require('./api/user/Routes'));
