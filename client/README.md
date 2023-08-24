@@ -36,7 +36,7 @@ To install and run ShopSmart locally, follow these steps:
 2. Navigate to the project directory: `cd shopsmart`
 3. Install the dependencies: `npm install`
 4. Start the development server: `npm run dev`
-5. Open your browser and visit: `http://localhost:5173/`
+5. Open your browser and visit: `http://localhost:PORT`, where `PORT` is the port number specified in your environment.
 
 ## Usage
 
