@@ -79,4 +79,4 @@ ShopSmart is licensed under the [MIT License](LICENSE).
 
 ## Additional Information
 
-For additional information, contact us at s.ammarahmed14@gmail.com or visit our website [https://shopsmart.cyclic.cloud](https://www.shopsmart.com).
+For additional information, contact us at s.ammarahmed14@gmail.com or visit our website [https://shopsmart.cyclic.cloud](https://shopsmart.cyclic.cloud).
