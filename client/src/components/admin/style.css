@@ -95,7 +95,7 @@
   border-radius: 10px;
 }
 
-.form1 label .input1 + span {
+.form1 label .input1+span {
   position: absolute;
   left: 10px;
   top: 15px;
@@ -105,19 +105,19 @@
   transition: 0.3s ease;
 }
 
-.form1 label .input1:placeholder-shown + span {
+.form1 label .input1:placeholder-shown+span {
   top: 15px;
   font-size: 0.9em;
 }
 
-.form1 label .input1:focus + span,
-.form1 label .input1:valid + span {
+.form1 label .input1:focus+span,
+.form1 label .input1:valid+span {
   top: 0px;
   font-size: 0.7em;
   font-weight: 600;
 }
 
-.form1 label .input1:valid + span {
+.form1 label .input1:valid+span {
   color: green;
 }
 
@@ -148,6 +148,7 @@
     opacity: 0;
   }
 }
+
 /* End Add User */
 
 /* User Profile */
@@ -206,9 +207,14 @@
   text-decoration: none;
   color: #626262;
 }
+
 /* ShowBrand.jsx Styling */
-.brand-image {
-  max-width: 100px; /* Adjust the image width as needed */
+.brand-image,
+.product-image,
+.category-image,
+.order-image,
+.user-image {
+  max-width: 100px;
   height: auto;
 }
 

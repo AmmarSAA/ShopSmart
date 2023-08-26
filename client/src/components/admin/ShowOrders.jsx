@@ -12,7 +12,7 @@ function ShowOrders() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001api/order/getOrders")
+      .get("api/order/getOrders")
       .then((json) => setOrders(json.data.orders))
       .catch((err) => console.log(err));
   }, []);

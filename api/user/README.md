@@ -9,6 +9,7 @@ This is a User Management API built using Express and MongoDB to handle user aut
     - [Get Users](#get-users)
     - [Update User](#update-user)
     - [Get User By ID](#get-user-by-id)
+    - [Get User By Email](#get-user-by-email)
     - [Delete User](#delete-user)
   - [Environment Variables](#environment-variables)
   - [How to Run](#how-to-run)
@@ -29,17 +30,11 @@ This is a User Management API built using Express and MongoDB to handle user aut
 "Password": "user_password"
 }
 
-makefile
-Copy code
-
 **Response:**
 {
 "message": "Success! Logged In.",
 "token": "your_generated_jwt_token"
 }
-
-markdown
-Copy code
 
 ### Signup
 
@@ -56,16 +51,10 @@ Copy code
 "Password": "user_password"
 }
 
-makefile
-Copy code
-
 **Response:**
 {
 "message": "Success! New User Added."
 }
-
-markdown
-Copy code
 
 ### Get Users
 
@@ -96,9 +85,6 @@ Copy code
 ]
 }
 
-python
-Copy code
-
 ### Update User
 
 **Description:** This endpoint is for updating the user's profile. It updates the user's email, name, and profile picture based on the provided `_id`.
@@ -115,9 +101,6 @@ Copy code
 "ProfilePic": "updated_profile_picture_url"
 }
 
-makefile
-Copy code
-
 **Response:**
 {
 "message": "Woohoo! Updated Successfully.",
@@ -129,9 +112,6 @@ Copy code
 "Joining": "user_joining_date"
 }
 }
-
-markdown
-Copy code
 
 ### Get User By ID
 
@@ -152,8 +132,24 @@ Copy code
 }
 }
 
-markdown
-Copy code
+### Get User By Email
+
+**Description:** This endpoint retrieves a user's details by `email`, excluding the password from the response.
+
+**HTTP Method:** GET
+
+**Endpoint:** `/api/users/getUserByID?email=user_email`
+
+**Response:**
+{
+"user": {
+"_id": "user_id",
+"Name": "User Name",
+"Email": "user@example.com",
+"ProfilePic": "profile_picture_url",
+"Joining": "user_joining_date"
+}
+}
 
 ### Delete User
 
@@ -168,26 +164,17 @@ Copy code
 "_id": "user_id"
 }
 
-makefile
-Copy code
-
 **Response:**
 {
 "message": "Success! User Deleted."
 }
 
-bash
-Copy code
-
 ## Environment Variables
 
 Before running the API, make sure to set the following environment variables in a `.env` file:
 
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-
-typescript
-Copy code
+`MONGO_URI`  = `your_mongodb_connection_string`
+`JWT_SECRET` = `your_jwt_secret`
 
 ## How to Run
 

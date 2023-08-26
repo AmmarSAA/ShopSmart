@@ -4,7 +4,7 @@
 * Output: Routes        *
 ************************/
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from 'react';
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
@@ -21,11 +21,21 @@ import Users from "./pages/admin/Users";
 import Brand from "./pages/admin/Brand";
 import Order from "./pages/admin/Order";
 import Product from "./pages/admin/Product";
+import axios from "axios";
 
 export const SERVER = "/";
 
 export default function App() {
   const { state } = useContext(LoginContext);
+  axios.interceptors.request.use(
+    config => {
+      config.headers.authorization = `Bearer ${state.token}`;
+      return config;
+    },
+    error => {
+      return Promise.reject(error);
+    }
+  )
 
   return (
     <>
@@ -50,16 +60,16 @@ export default function App() {
           </>
         ) : state.userRole === "admin" ? (
           <>
-            <Route path="/admin" element={<AdminHome />}/>
-            <Route path="/admin/users" element={<Users />}/>
-            <Route path="/admin/brand" element={<Brand />}/>
-            <Route path="/admin/category" element={<Category />}/>
-            <Route path="/admin/order" element={<Order />}/>
-            <Route path="/admin/product" element={<Product />}/>
+            <Route path="/admin" element={<AdminHome />} />
+            <Route path="/admin/users" element={<Users />} />
+            <Route path="/admin/brand" element={<Brand />} />
+            <Route path="/admin/category" element={<Category />} />
+            <Route path="/admin/order" element={<Order />} />
+            <Route path="/admin/product" element={<Product />} />
             <Route path="*" element={<Navigate to="/" replace={true} />} />
           </>
         ) : (
-        <Route path="*" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         )}
       </Routes>
 

@@ -1,8 +1,8 @@
-/********************************
-* File Name: ShowOrder.jsx   *
-* Author: Ammar S.A.A           *
+/****************************
+* File Name: ShowOrder.jsx  *
+* Author: Ammar S.A.A       *
 * Output: Show All Orders   *
-********************************/
+****************************/
 
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -14,7 +14,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import { BsFillPencilFill } from "react-icons/bs";
 import { SERVER } from '../../App';
 
-function ShowOrders() {
+function ShowOrder() {
 
   const [orders, setOrders] = useState([])
 
@@ -80,4 +80,4 @@ function ShowOrders() {
   );
 }
 
-export default ShowOrders;
+export default ShowOrder;

@@ -1,86 +1,161 @@
 /********************************
-* File Name: Checkout.jsx 		*
-* Author: Ammar S.A.A 			*
-* Output: Checkout Component 	*
-********************************/
+ * File Name: Checkout.jsx 		*
+ * Author: Ammar S.A.A 			*
+ * Output: Checkout Component 	*
+ ********************************/
 
-import React from 'react';
+import React from "react";
 import "./checkout.css";
+import { useContext, useEffect, useState } from "react";
+import { LoginContext } from "../Context/Login-Context/login-context";
+import { GlobalContext } from "../Context/context";
+import axios from "axios";
+import { SERVER } from "../App";
 
 export default function Checkout() {
-	return (
-		<form className="form">
-			<header>
-				Credit card information
-				<span className="message">Fill the form to continue.</span>
-			</header>
-			<label>
-				<span>Card Number</span>
-				<input
-					placeholder="Type your card number"
-					className="input"
-					type="number"
-					required=""
-				/>
-			</label>
-			<label>
-				<span>Name on card</span>
-				<input
-					placeholder="Type your name as appear on card"
-					className="input"
-					type="text"
-					required=""
-				/>
-			</label>
-			<fieldset>
-				<label className="sm">
-					<span>Exp. Month</span>
-					<div className="custom-select">
-						<select className="input" type="select" required="">
-							<option />
-							<option>January</option>
-							<option>February</option>
-							<option>March</option>
-							<option>April</option>
-							<option>May</option>
-							<option>June</option>
-							<option>July</option>
-							<option>August</option>
-							<option>September</option>
-							<option>October</option>
-							<option>November</option>
-							<option>Dicember</option>
-						</select>
-					</div>
-				</label>
-				<label className="sm">
-					<span>Exp. Year </span>
-					<div className="custom-select">
-						<select className="input" type="select" required="">
-							<option />
-							<option>2023</option>
-							<option>2024</option>
-							<option>2025</option>
-							<option>2026</option>
-						</select>
-					</div>
-				</label>
-				<label className="sm">
-					<span>CVV </span>
-					<input
-						className="input"
-						placeholder={1234}
-						size={4}
-						maxLength={4}
-						type="text"
-						required=""
-					/>
-				</label>
-			</fieldset>
-			<div className="submitCard">
-				<button>Complete payment</button>
-			</div>
-		</form>
+	const { loginState } = useContext(LoginContext);
+	let { state } = useContext(GlobalContext);
 
-	)
+	const [customerName, setName] = useState("");
+	const [message, setMessage] = useState("");
+	const [customerContact, setContact] = useState("");
+	const [customerAddress, setAddress] = useState("");
+	const [items, setitems] = useState([]);
+	const [totalBill, settotalBill] = useState("");
+	const [customerEmail, setCustomerEmail] = useState("");
+	const [status, setstatus] = useState("pending");
+
+	const setCustomerName = (e) => {
+		setName(e.target.value);
+	};
+
+	const setCustomerAddress = (e) => {
+		setAddress(e.target.value);
+	};
+
+	const setCustomerContact = (e) => {
+		setContact(e.target.value);
+	};
+
+	const CustomerEmail = (e) => {
+		setCustomerEmail(e.target.value);
+	};
+
+	useEffect(() => {
+		if (state.cart) {
+			setitems(state.cart);
+			calculateTotalBill();
+		}
+	}, [state.cart]);
+
+	const calculateTotalBill = () => {
+		const total = state.cart.reduce(
+			(acc, item) => acc + item.price * item.count,
+			0
+		);
+		settotalBill(total);
+	};
+
+	useEffect(() => {
+		calculateTotalBill(); // Calculate the total when the cart changes
+	}, [state.cart]);
+	const placeOrder = async () => {
+		// Prepare the payload
+		const payload = {
+			items: items,
+			totalBill: totalBill,
+			customerAddress: customerAddress,
+			customerContact: customerContact,
+			customerName: customerName,
+			customerEmail: customerEmail,
+			status: status,
+		};
+
+		const userResponse = await axios.get(
+			`${SERVER}api/users/getUserByEmail?email=${customerEmail}`
+		);
+		const userData = userResponse.data.user;
+		{
+			userData
+				? setName(userData.name)
+				: setMessage("User not Found Login First");
+		}
+
+		try {
+			// Fetch user data
+			// Make the POST request to create an order
+			const orderResponse = await axios.post(
+				`${SERVER}api/order/createOrder`,
+				payload
+			);
+			setMessage(orderResponse.data.message);
+			console.log(orderResponse.data);
+		} catch (error) {
+			console.error(error);
+			alert("An error occurred while placing the order.");
+		}
+	};
+
+	return (
+		<>
+			<form className="form3">
+				{message ? (
+					<h4 className="alert alert-danger text-center text-capitalize">
+						{message}
+					</h4>
+				) : null}
+
+				<div className="form-title3">
+					<span className="span3">enter details for placing</span>
+				</div>
+				<div className="title-2">
+					<span className="span3">Order</span>
+				</div>
+				<div className="input-container3">
+					<input
+						className="input-mail3 input3"
+						type="email"
+						placeholder="Enter email"
+						required={true}
+						value={customerEmail}
+						onChange={CustomerEmail}
+					/>
+					{/* <span> </span> */}
+				</div>
+				<div className="input-container3">
+					<input
+						className="input-cntct3 input3"
+						type="number"
+						placeholder="Enter Contact No."
+						required={true}
+						value={customerContact}
+						onChange={setCustomerContact}
+					/>
+				</div>
+				{/* <section className="bg-stars3">
+					<span className="star3" />
+					<span className="star3" />
+					<span className="star3" />
+					<span className="star3" />
+				</section> */}
+				<div className="input-container3">
+					<input
+						className="input-pwd3 input3"
+						type="password"
+						placeholder="Enter password"
+						required={true}
+						value={customerAddress}
+						onChange={setCustomerAddress}
+					/>
+				</div>
+				<button type="submit" className="submit3 button3" onClick={placeOrder}>
+					<span className="sign-text3 span3">Place Order</span>
+				</button>
+				<p class="signup-link3">
+					Note: Cash On Delivery
+					{/* <a href="" class="up3 a3">Sign up!</a> */}
+				</p>
+			</form >
+		</>
+	);
 }

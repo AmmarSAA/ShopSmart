@@ -25,7 +25,7 @@ function ShowUsers() {
   }, [])
 
   return (
-    <div className="table-responsive"> {/* Wrap the Table component in a responsive container */}
+    <div className="table-responsive">
       <Table striped bordered hover className='w-100 table-fluid'>
         <thead>
           <tr>
@@ -46,7 +46,7 @@ function ShowUsers() {
                 <td className='text-truncate'>{val._id}</td>  
                 <td>{val.name}</td>
                 <td>{val.email}</td>
-                <td><img src={val.image} alt={val.name} className='user-image' /></td>
+                <td><img src={val.profilePic} alt={val.name} className='user-image' /></td>
                 <td>{val.role}</td>
                 <td>{val.createdAt}</td>
                 <td>{val.updatedAt}</td>

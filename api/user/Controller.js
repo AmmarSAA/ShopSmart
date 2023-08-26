@@ -206,6 +206,34 @@ const userByID = async (req, res) => {
     }
 }
 
+///api/users/userByEmail
+const userByEmail = async (req, res) => {
+
+    const { email } = req.query
+
+    try {
+        //connection
+        //Connection to database
+        await connect(process.env.MONGO_URI)
+        //find one from _id and fetch it's details except of password
+        const user = await User.findOne({ email }, { password: 0 })
+
+        if (!user) {
+            return res.json({
+                message: "Oops! User Not Found."
+            });
+        }
+        res.json({ user })
+    }
+
+    //catches error and broadcasts
+    catch (error) {
+        res.json({
+            message: error.message
+        })
+    }
+}
+
 ///api/users/deleteUser
 const deleteUser = async (req, res) => {
 
@@ -229,4 +257,4 @@ const deleteUser = async (req, res) => {
     }
 }
 
-module.exports = { Signin, Signup, deleteUser, updateUser, userByID, getUsers }
+module.exports = { Signin, Signup, deleteUser, updateUser, userByID, userByEmail, getUsers }

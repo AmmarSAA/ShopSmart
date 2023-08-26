@@ -1,7 +1,7 @@
 /********************************
-* File Name: Brand.jsx 	        *
+* File Name: Order.jsx 	        *
 * Author: Ammar S.A.A 	      	*
-* Output: Brand Page for Admin  *
+* Output: Order Page for Admin  *
 ********************************/
 
 import React from 'react'
@@ -10,7 +10,7 @@ import { Row } from 'react-bootstrap'
 import { Col } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import { FaSearch } from 'react-icons/fa'
-import ShowOrders from '../../components/admin/ShowOrders'
+import ShowOrder from '../../components/admin/ShowOrder'
 
 export default function Order() {
   return (
@@ -37,7 +37,7 @@ export default function Order() {
             </Form>
           </div>
         </div>
-        <ShowOrders />
+        <ShowOrder />
       </div>
     </div>
   )

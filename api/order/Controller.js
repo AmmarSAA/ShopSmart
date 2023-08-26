@@ -215,7 +215,7 @@ const getOrder = async (req, res) => {
 
         if (allOrders.length === 0) {
             return res.json({
-                message: "Oops! No Oders."
+                message: "Oops! No Orders."
             })
         }
         res.json({
