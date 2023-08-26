@@ -141,8 +141,8 @@ export default function Checkout() {
 				<div className="input-container3">
 					<input
 						className="input-pwd3 input3"
-						type="password"
-						placeholder="Enter password"
+						type="text"
+						placeholder="Enter Address"
 						required={true}
 						value={customerAddress}
 						onChange={setCustomerAddress}
