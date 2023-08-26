@@ -98,7 +98,7 @@ export default function Checkout() {
 
 	return (
 		<>
-			<form className="form3">
+			<form className="form3  justify-content-center align-items-center text-center">
 				{message ? (
 					<h4 className="alert alert-danger text-center text-capitalize">
 						{message}
