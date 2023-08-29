@@ -41,7 +41,7 @@ const ordermail = async (req, res) => {
         theme: 'default',
         product: {
             // Appears in header & footer of e-mails
-            name: 'Mailgen Mymart',
+            name: 'Mailgen ShopSmart',
             link: 'https://mailgen.js/'
         }
     });
@@ -160,7 +160,7 @@ const createOrder = async (req, res) => {
                 theme: 'default',
                 product: {
                     // Appears in header & footer of e-mails
-                    name: 'Mailgen Mymart',
+                    name: 'Mailgen ShopSmart',
                     link: 'https://mailgen.js/'
                 }
             });
