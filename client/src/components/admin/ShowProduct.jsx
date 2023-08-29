@@ -16,11 +16,11 @@ import { SERVER } from '../../App';
 
 function ShowProducts() {
 
-  const [orders, setProducts] = useState([])
+  const [product, setProducts] = useState([])
 
   useEffect(() => {
     axios.get(`${SERVER}api/product/getProduct`)
-      .then((json) => setProducts(json.data.orders))
+      .then((json) => setProducts(json.data.product))
       .catch((err) => console.log(err))
   }, [])
 
@@ -31,7 +31,14 @@ function ShowProducts() {
           <tr>
             <th className='text-center w-25'>ID</th>
             <th className='text-center'>Name</th>
-            <th className='text-center'>Picture</th>
+            <th className='text-center'>Thumbnail</th>
+            <th className='text-center'>Images</th>
+            <th className='text-center'>Quantity</th>
+            <th className='text-center'>Retail Price</th>
+            <th className='text-center'>Purchase Price</th>
+            <th className='text-center'>Brand</th>
+            <th className='text-center'>Category</th>
+            <th className='text-center'>Description</th>
             <th className='text-center'>Creation Date</th>
             <th className='text-center'>Updation Date</th>
             <th colSpan={2} className='text-center justify-content-center align-items-center'>Actions</th>
@@ -39,11 +46,18 @@ function ShowProducts() {
         </thead>
         <tbody>
           {
-            orders?.map((val, key) =>
+            product?.map((val, key) =>
               <tr key={key}>
                 <td className='text-truncate'>{val._id}</td>
                 <td>{val.name}</td>
-                <td><img src={val.image} alt={val.name} className='order-image' /></td>
+                <td><img src={val.thumbnail} alt={val.name} className='product-image' /></td>
+                <td><img src={val.images} alt={val.name} className='product-image' /></td>
+                <td>{val.stock}</td>
+                <td>{val.retailPrice}</td>
+                <td>{val.purchasePrice}</td>
+                <td>{val.brandID}</td>
+                <td>{val.catIC}</td>
+                <td>{val.description}</td>
                 <td>{val.createdAt}</td>
                 <td>{val.updatedAt}</td>
                 <td className='text-center justify-content-center align-items-center'>
@@ -55,7 +69,7 @@ function ShowProducts() {
                     Icon={AiFillDelete}
                     ClassForIcon="navbar-icon"
                     setProducts={setProducts}
-                    orderID={val._id}
+                    productID={val._id}
                     initialProductName={val.name}
                   />
                 </td>
@@ -68,7 +82,7 @@ function ShowProducts() {
                     Icon={BsFillPencilFill}
                     ClassForIcon="navbar-icon"
                     setProducts={setProducts}
-                    order={val}
+                    product={val}
 
                   />
                 </td>

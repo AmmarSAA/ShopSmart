@@ -30,17 +30,21 @@ const ProductSchema = new Schema({
         default: 5,
     },
     brandID: {
-        type: Number,
+        type: String,
         required: true,
     },
     catID: {
-        type: Number,
+        type: String,
         required: true,
     },
     description: {
         type: String,
     },
     images: {
+        type: Array,
+        required: true,
+    },
+    thumbnail: {
         type: String,
         required: true,
     },
