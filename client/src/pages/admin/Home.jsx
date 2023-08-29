@@ -88,7 +88,7 @@ function AdminHome() {
       .then((json) => setUsers(json.data.users))
       .catch((err) => console.log(err));
   }, []);
-  const userCount = users.length;
+  const userCount = users?.length;
 
   //Count Products
   useEffect(() => {
@@ -97,7 +97,7 @@ function AdminHome() {
       .then((json) => setProduct(json.data.product))
       .catch((err) => console.log(err));
   }, []);
-  const productCount = product.length;
+  const productCount = product?.length;
 
   //Count Orders
   useEffect(() => {
@@ -106,7 +106,7 @@ function AdminHome() {
       .then((json) => setOrder(json.data.order))
       .catch((err) => console.log(err));
   }, []);
-  const orderCount = order.length;
+  const orderCount = order?.length;
 
   //Count Brands
   useEffect(() => {
@@ -115,7 +115,7 @@ function AdminHome() {
       .then((json) => setBrand(json.data.brand))
       .catch((err) => console.log(err));
   }, []);
-  const brandCount = brand.length;
+  const brandCount = brand?.length;
 
   //Count Categories
   useEffect(() => {
@@ -124,7 +124,7 @@ function AdminHome() {
       .then((json) => setCategory(json.data.category))
       .catch((err) => console.log(err));
   }, []);
-  const categoryCount = category.length;
+  const categoryCount = category?.length;
 
   return (
     <div className="container container-fluid justify-content-center align-items-center">
@@ -139,7 +139,7 @@ function AdminHome() {
             <div className="card__img9">
               <img src="./images/users.png" height="220vh" alt="Users" />
             </div>
-            <div className="card__subtitle9">Total Users: {userCount < 0 ? 0 : userCount}</div>
+            <div className="card__subtitle9">Total Users: {userCount}</div>
             <div className="card__wrapper9">
               <div className="card__title9">Details</div>
               <Link to="/admin/users">
@@ -201,7 +201,7 @@ function AdminHome() {
               <img src="./images/product.png" height="220vh" alt="Products" />
             </div>
             <div className="card__subtitle9">
-              Total Products: {productCount < 0 ? 0 : productCount}
+              Total Products: {productCount}
             </div>
             <div className="card__wrapper9">
               <div className="card__title9">Details</div>
@@ -263,7 +263,7 @@ function AdminHome() {
             <div className="card__img9">
               <img src="./images/order.png" height="220vh" alt="Orders" />
             </div>
-            <div className="card__subtitle9">Total Orders: {orderCount < 0 ? 0 : orderCount}</div>
+            <div className="card__subtitle9">Total Orders: {orderCount}</div>
             <div className="card__wrapper9">
               <div className="card__title9">Details</div>
               <Link to="/admin/order">
@@ -325,7 +325,7 @@ function AdminHome() {
               <img src="./images/category.png" height="220vh" alt="Categories" />
             </div>
             <div className="card__subtitle9">
-              Total Categories: {categoryCount < 0 ? 0 : categoryCount}
+              Total Categories: {categoryCount}
             </div>
             <div className="card__wrapper9">
               <div className="card__title9">Details</div>
@@ -388,7 +388,7 @@ function AdminHome() {
               <img src="./images/brand.png" height="220vh" alt="Brands" />
             </div>
             <div className="card__subtitle9">
-              Total Brands: {brandCount < 0 ? 0 : brandCount}
+              Total Brands: {brandCount}
             </div>
             <div className="card__wrapper9">
               <div className="card__title9">Details</div>
