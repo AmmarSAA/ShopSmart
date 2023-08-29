@@ -10,7 +10,7 @@ import { PiSignIn } from "react-icons/pi";
 export default function LoginForm() {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => { setShow(false), window.location.reload() };
+  const handleClose = () => { setShow(false) };
   const handleShow = () => setShow(true);
 
   return (

@@ -44,6 +44,7 @@ const SignIn = () => {
         });
         setMessage(response.data.message);
         setIsLoading(false);
+        window.location.reload();
       })
       .catch((error) => {
         setError(error.response?.data?.message || 'An error occurred');
