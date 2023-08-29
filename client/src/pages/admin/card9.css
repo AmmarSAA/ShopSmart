@@ -1,0 +1,139 @@
+.card9 {
+  --main-color: #323232;
+  --sub-color: #5b5b5b;
+  --bg-color: #c7c7c7;
+  --accent-color: #242C88;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 270px;
+  padding: 25px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: var(--bg-color);
+  transition: all 0.2s;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px -1.5px #000;
+}
+
+.card9::before {
+  content: '';
+  width: 99%;
+  height: 99%;
+  background: var(--sub-color);
+  position: absolute;
+  z-index: -1;
+  top: 1px;
+  left: 1px;
+  border-radius: 25px;
+  transition: all 0.3s;
+}
+
+.card__wrapper9 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__img9 {
+  width: 100%;
+}
+
+.card__title9 {
+  color: var(--main-color);
+  font-weight: 900;
+  font-size: 25px;
+}
+
+.card__subtitle9 {
+  color: var(--sub-color);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.card__icon9 {
+  width: 40px;
+  height: 40px;
+  transform: rotate(-45deg);
+  transition: all 0.3s;
+}
+
+.card__icon9 svg {
+  width: 100%;
+  height: 100%;
+}
+
+.card__icon9 g {
+  fill: var(--main-color);
+}
+
+.card__icon9 circle, polyline, line {
+  stroke: var(--main-color);
+}
+
+.card9:hover .card__icon9 {
+  transform: rotate(0);
+}
+
+.card9:hover .card__icon9 circle, .card9:hover .card__icon9 polyline, .card9:hover .card__icon9 line {
+  stroke: var(--accent-color);
+}
+
+.card9:hover .card__icon9 g {
+  fill: var(--accent-color);
+}
+
+.card9:hover {
+  box-shadow: 0px 0px 20px -5px #000;
+}
+
+.card9:hover::before {
+  transform: rotate(10deg);
+  box-shadow: 0px 0px 20px -5px #000;
+}
+
+/* remove svg from class ="card__img" and last styles below css code before use */
+.st1 {
+  fill: #fff
+}
+
+.st2 {
+  fill: none;
+  stroke: #242c88;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10
+}
+
+.st7 {
+  fill: #589fff
+}
+
+.st9 {
+  fill: #bc8d66
+}
+
+.st15,.st16 {
+  opacity: .4;
+  fill: #242c88
+}
+
+.st16 {
+  opacity: .2
+}
+
+.st18 {
+  fill: #ffc408
+}
+
+.st53 {
+  fill: none;
+  stroke: #242c88;
+  stroke-width: 1.848;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10
+}
