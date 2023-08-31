@@ -4,7 +4,7 @@
 * Output: Routes        *
 ************************/
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
@@ -28,14 +28,14 @@ export const SERVER = "/";
 export default function App() {
   const { state } = useContext(LoginContext);
   axios.interceptors.request.use(
-    config => {
+    (config) => {
       config.headers.authorization = `Bearer ${state.token}`;
       return config;
     },
-    error => {
+    (error) => {
       return Promise.reject(error);
     }
-  )
+  );
 
   return (
     <>
@@ -47,14 +47,10 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/category/:categoryName" element={<CategoryPage />} />
+        <Route path="/product/" element={<ProductPage />} />
         {state.userRole === "user" ? (
           <>
-            <Route
-              path="/products/category/:categoryName"
-              element={<CategoryPage />}
-            />
-            <Route path="/product/:productId" element={<ProductPage />} />
-            <Route path="*" element={<Navigate to="/" replace={true} />} />
             <Route path="/product/:productId" element={<ProductPage />} />
             <Route path="*" element={<Navigate to="/" replace={true} />} />
           </>
