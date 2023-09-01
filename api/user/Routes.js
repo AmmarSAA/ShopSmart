@@ -7,7 +7,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { Signin, Signup, deleteUser, updateUser, userByID, userByEmail, getUsers } = require('./Controller')
+const { Signin, Signup, deleteUser, updateUser, userByID, userByEmail, getUsers, search } = require('./Controller')
 const authenticateToken = require('../../middleware/authenticateToken')
 
 router.post('/signin', Signin)
@@ -17,6 +17,7 @@ router.get('/getUserByID', authenticateToken, userByID)
 router.get('/getUserByEmail', authenticateToken, userByEmail)
 router.delete('/deleteUser', authenticateToken, deleteUser)
 router.put('/updateUser', authenticateToken, updateUser)
+router.get('/search', search)
 
 // router.get('/signup', (req, res) => {
 //     // Handle the request for the /api/users route
