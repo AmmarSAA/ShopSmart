@@ -142,10 +142,10 @@ const getUsers = async (req, res) => {
 
 ///api/users/updateUser
 const updateUser = async (req, res) => {
-	const { _id, email, name, ProfilePic } = req.body;
+	const { _id, email, name, profilePic } = req.body;
 
 	const filter = { _id };
-	const update = { email, name, ProfilePic };
+	const update = { email, name, profilePic };
 
 	try {
 		//connection
