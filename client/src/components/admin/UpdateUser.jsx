@@ -129,7 +129,6 @@ export default function UpdateUser({ setUsers, user, Variant, ClassForButton, Na
 							<input
 								className="input1 pt-3 pb-1 form-control"
 								type="file"
-								value={updatedImage}
 								onChange={(e) => setUpdatedImage(e.target.files[0])}
 							/>
 						</label>
