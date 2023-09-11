@@ -4,16 +4,14 @@ Discover Your Style, Shop with Ease
 
 ## Table of Contents
 
-- [ShopSmart](#shopsmart)
-  - [Table of Contents](#table-of-contents)
-  - [About](#about)
-  - [Features](#features)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Technologies Used](#technologies-used)
-  - [Contributing](#contributing)
-  - [License](#license)
-  - [Additional Information](#additional-information)
+- [About](#about)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 ## About
 
@@ -32,10 +30,10 @@ ShopSmart is an e-commerce platform that aims to provide users with a seamless s
 
 To install and run ShopSmart locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/ammarsaa/ShopSmart`
+1. Clone the repository: `git clone https://github.com/ammarsaa/shopsmart`
 2. Navigate to the project directory: `cd shopsmart`
 3. Install the dependencies: `npm install`
-4. Start the development server: `npm run dev`
+4. Start the development server: `npm start`
 5. Open your browser and visit: `http://localhost:PORT`, where `PORT` is the port number specified in your environment.
 
 ## Usage
@@ -58,9 +56,10 @@ To use ShopSmart, follow these guidelines:
 - CSS
 - Bootstrap
 - npm
-- dummy.api
-- Rest API
-- & +++
+- MongoDB
+- Express.js
+- REST API
+- & More
 
 ## Contributing
 
@@ -78,6 +77,6 @@ Please ensure that your code follows the established coding conventions and incl
 
 ShopSmart is licensed under the [MIT License](LICENSE).
 
-## Additional Information
+## Contact
 
-For additional information, contact us at s.ammarahmed14@gmail.com or visit our website [https://shopsmart.cyclic.cloud](https://shopsmart.cyclic.cloud).
+For additional information or inquiries, please contact us at s.ammarahmed14@gmail.com or visit our website [https://shopsmart.cyclic.cloud](https://shopsmart.cyclic.cloud).
