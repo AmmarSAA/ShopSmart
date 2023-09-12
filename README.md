@@ -1,8 +1,9 @@
-<center>
+
+<!-- <center>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8622a67a-603b-4385-afe5-5b4fb95f72f0/deploy-status)](https://app.netlify.com/sites/famous-concha-6adf81/deploys)
 
-</center>
+</center> -->
 
 # ShopSmart
 
