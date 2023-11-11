@@ -4,13 +4,13 @@
 * Output: Sample Admin Dashboard 	*
 **********************************/
 
-import React, { useState, useContext, useEffect, useRef } from "react";
+import { useState, useContext, useEffect } from "react";
 import { LoginContext } from "../../Context/Login-Context/login-context";
-import Chart from "chart.js/auto";
 import "./card9.css";
 import axios from "axios";
 import { SERVER } from "../../App";
 import { Link } from "react-router-dom";
+//import Chart from "chart.js/auto";
 
 function AdminHome() {
   const { state } = useContext(LoginContext);
@@ -80,6 +80,11 @@ function AdminHome() {
   const [order, setOrder] = useState([]);
   const [brand, setBrand] = useState([]);
   const [category, setCategory] = useState([]);
+  let userCount;
+  let productCount;
+  let orderCount;
+  let brandCount;
+  let categoryCount;
 
   //Count Users
   useEffect(() => {
@@ -88,52 +93,56 @@ function AdminHome() {
       .then((json) => setUsers(json.data.users))
       .catch((err) => console.log(err));
   }, []);
-  const userCount = users?.length;
+  // console.log(users);
+  userCount = users?.length ?? 0;
+  // console.log(userCount);
 
-  //Count Products
+  // //Count Products
   useEffect(() => {
     axios
       .get(`${SERVER}api/product/getProduct`)
-      .then((json) => setProduct(json.data.product))
+      .then((json) => setProduct(json.data.products))
       .catch((err) => console.log(err));
   }, []);
-  const productCount = product?.length;
+  productCount = product?.length ?? 0;
 
   //Count Orders
   useEffect(() => {
     axios
-      .get(`${SERVER}api/product/getorder`)
-      .then((json) => setOrder(json.data.order))
+      .get(`${SERVER}api/order/getorder`)
+      .then((json) => setOrder(json.data.orders))
       .catch((err) => console.log(err));
   }, []);
-  const orderCount = order?.length;
+  orderCount = order?.length ?? 0;
 
   //Count Brands
   useEffect(() => {
     axios
-      .get(`${SERVER}api/product/getBrand`)
-      .then((json) => setBrand(json.data.brand))
+      .get(`${SERVER}api/brand/getBrand`)
+      .then((json) => setBrand(json.data.brands))
       .catch((err) => console.log(err));
   }, []);
-  const brandCount = brand?.length;
+  brandCount = brand?.length ?? 0;
 
   //Count Categories
   useEffect(() => {
     axios
-      .get(`${SERVER}api/product/getCategory`)
-      .then((json) => setCategory(json.data.category))
+      .get(`${SERVER}api/category/getCategory`)
+      .then((json) => setCategory(json.data.categories))
       .catch((err) => console.log(err));
   }, []);
-  const categoryCount = category?.length;
+  categoryCount = category?.length ?? 0;
 
   return (
     <div className="container container-fluid justify-content-center align-items-center">
       <h2 className="text-capitalize pb-1 text-center mt-1">
-        {state.userName}'s {state.userRole} Dashboard
+        {state.userName}&apos;s {state.userRole} Dashboard
       </h2>
 
       {/* Cards Start */}
       <div className="row m-2">
+
+        {/* User Card */}
         <div className="col-auto">
           <div className="card9 text-decoration-none m-1 bg-primary">
             <div className="card__img9">
@@ -195,6 +204,8 @@ function AdminHome() {
             </div>
           </div>
         </div>
+
+        {/* Product Card */}
         <div className="col-auto">
           <div className="card9 text-decoration-none m-1 bg-warning">
             <div className="card__img9">
@@ -258,6 +269,8 @@ function AdminHome() {
             </div>
           </div>
         </div>
+
+        {/* Order Card */}
         <div className="col-auto">
           <div className="card9 text-decoration-none m-1 bg-info">
             <div className="card__img9">
@@ -319,6 +332,8 @@ function AdminHome() {
             </div>
           </div>
         </div>
+
+        {/* Category Card */}
         <div className="col-auto">
           <div className="card9 text-decoration-none m-1 bg-success">
             <div className="card__img9">
@@ -382,6 +397,8 @@ function AdminHome() {
             </div>
           </div>
         </div>
+
+        {/* Brand Card */}
         <div className="col-auto">
           <div className="card9 text-decoration-none m-1 bg-danger">
             <div className="card__img9">
@@ -445,6 +462,7 @@ function AdminHome() {
             </div>
           </div>
         </div>
+
       </div>
       {/* Cards End */}
 
