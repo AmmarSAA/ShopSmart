@@ -12,14 +12,15 @@ import UpdateOrder from "./UpdateOrder";
 import "./style.css";
 import { AiFillDelete } from "react-icons/ai";
 import { BsFillPencilFill } from "react-icons/bs";
+import { SERVER } from "../../App";
 
 function ShowOrder() {
   const [order, setOrder] = useState([]);
 
   useEffect(() => {
     axios
-      .get("api/order/getOrder")
-      .then((json) => setOrder(json.data.order))
+      .get(`${SERVER}api/order/getOrder`)
+      .then((json) => setOrder(json.data.orders))
       .catch((err) => console.log(err));
   }, []);
 
