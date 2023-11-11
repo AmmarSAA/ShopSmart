@@ -7,9 +7,9 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
-import DeleteCategory from './DeleteCategory'; // Import the DeleteCategory component
+import DeleteCategory from './DeleteCategory';
 import UpdateCategory from './UpdateCategory';
-import './style.css'; // Import a CSS file for custom styles
+import './style.css';
 import { AiFillDelete } from 'react-icons/ai';
 import { BsFillPencilFill } from "react-icons/bs";
 import { SERVER } from '../../App';
@@ -38,7 +38,7 @@ function ShowCategories() {
           </tr>
         </thead>
         <tbody>
-          {
+          {categories && categories.length > 0 ? (
             categories?.map((val, key) =>
               <tr key={key}>
                 <td className='text-truncate'>{val._id}</td>
@@ -72,8 +72,12 @@ function ShowCategories() {
 
                   />
                 </td>
-              </tr>)
-          }
+              </tr>
+            )) : (
+            <tr>
+              <td colSpan="7" className="bg-light text-center text-capitalize">Oops! No categories found.</td>
+            </tr>
+          )}
         </tbody>
       </Table>
     </div>
