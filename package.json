@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "nodemon index.js",
-    "client": "cd client && npm run dev"
+    "server": "nodemon index.js",
+    "client": "cd client && npm run build-watch"
   },
   "repository": {
     "type": "",
