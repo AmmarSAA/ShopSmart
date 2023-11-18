@@ -10,8 +10,8 @@ import AddUser from './AddUser'
 import AddCategory from './AddCategory';
 import AddBrand from './AddBrand';
 import AddProduct from './AddProduct';
-import DeleteProduct from './DeleteProduct';
-import UpdateProduct from './UpdateProduct';
+// import DeleteProduct from './DeleteProduct';
+// import UpdateProduct from './UpdateProduct';
 // import UpdateUser from './UpdateUser';
 // import UpdateBrand from './UpdateBrand';
 // import UpdateCategory from './UpdateCategory';
