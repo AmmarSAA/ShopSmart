@@ -155,8 +155,8 @@ function NavbarAdmin() {
 									/>
 								</NavDropdown.Item> */}
 								<NavDropdown.Divider />
-								<NavDropdown.Item href="#">
-									<Link to='/admin/category' className='text-decoration-none ms-3 text-dark'>View All</Link>
+								<NavDropdown.Item href="/admin/category">
+									View All
 								</NavDropdown.Item>
 							</NavDropdown>
 							<NavDropdown title="Order" id="basic-nav-dropdown">
@@ -188,7 +188,7 @@ function NavbarAdmin() {
 									/>
 								</NavDropdown.Item> */}
 								<NavDropdown.Divider />
-								<NavDropdown.Item href="/admin/order" className="text-decoration-none mx-2 nav-color">
+								<NavDropdown.Item href="/admin/order">
 									View All
 								</NavDropdown.Item>
 							</NavDropdown>
@@ -224,7 +224,7 @@ function NavbarAdmin() {
 									/>
 								</NavDropdown.Item> */}
 								<NavDropdown.Divider />
-								<NavDropdown.Item href="/admin/product" className="text-decoration-none mx-2 nav-color">
+								<NavDropdown.Item href="/admin/product">
 									View All
 								</NavDropdown.Item>
 							</NavDropdown>
